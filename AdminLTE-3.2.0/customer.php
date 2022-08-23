@@ -92,13 +92,14 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Pancard No:
+                  <input type="text" name="name" class="form-control">
                   </label>
                   
                   <div class="custom-file">
                         <input type="file"  name="pan" id="exampleInputFile" class="form-control">
                        
                       </div>
-                       <input type="text" name="name" class="form-control">
+                       
                 </div>
               </div>
             </div>
