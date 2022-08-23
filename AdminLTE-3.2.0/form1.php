@@ -91,7 +91,7 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Pancard:
+                  <label>Pancard No:
                   </label>
                   
                   <div class="custom-file">
