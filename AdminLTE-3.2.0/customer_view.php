@@ -81,105 +81,86 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Minimal</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+              
+                <div class="col-md-4 col-sm-6">
+                              <div class="card card-widget widget-user">
+                            <div class="widget-user-header bg-info" style="background:#B2BEB5;height:168px">
+                              <div class="widget-header border-0 pb-0">
+                              <div class="d-flex align-items-center float-left">
+                              <div class="d-grid">
+                                  <div class="badge bg-primary p-2 px-3 rounded">
+                                  </div>
+                              </div>
+                      </div>
+                <div class="widget-header-right float-right">
+                    <div class="dropdown">
+                        <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+    
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            
+                        
+                            <a href="view_clients" class="dropdown-item"><i class="fa fa-eye"></i> View</a>
+    
+                            <button class="dropdown-item usereditid" type="button" data-id=""><i class="far fa-edit"></i> Edit</button>
+    
+                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
+    
+    
+                            <button class="dropdown-item rpassword" type="button" data-toggle="modal" data-id=""><i class="fa fa-key"></i> Reset
+                                Password</button>
+                                    <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
+                             
+                                <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
+                        </div>
+                    </div>
                 </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled</label>
-                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled Result</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
             </div>
-            <!-- /.row -->
-
-            <h5>Custom Color Variants</h5>
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Minimal (.select2-danger)</label>
-                  <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+                <div style="display:inline-block;width: 100%;">
+                    <a href="view_clients" style="color:white"> <h3 class="widget-user-username"></h3></a>
+                    <a href="view_clients" style="color:white"> <h5 class="widget-user-desc"></h5></a>
                 </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Multiple (.select2-purple)</label>
-                  <div class="select2-purple">
-                    <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                      <option>Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
-                    </select>
-                  </div>
+                
                 </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
+                <div class="widget-user-image" style="top:112px">
+                    <a href="view_clients" target="_blank">
+                    
+                            <img alt="user-image" class="img-circle elevation-2" src="dist\img\avatar5.png" style="height:100px;width:100px;">
+                        </a>
+                </div>
+        <div class="card-footer">
+        <div class="row">
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">3,200</h5>
+        <span class="description-text">Total ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">13,000</h5>
+        <span class="description-text">Business ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4">
+        <div class="description-block">
+        <h5 class="description-header">35</h5>
+        <span class="description-text">GST</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+        </div>
+                </div>
             </div>
-            <!-- /.row -->
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
@@ -192,80 +173,100 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Select2 (Bootstrap4 Theme)</h3>
-
+            <h3 class="card-title">ITR</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
               </button>
-             
+              
             </div>
-            <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
+             <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
+
+            
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Minimal</label>
-                  <select class="form-control select2bs4" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+              
+                <div class="col-md-4 col-sm-6">
+                              <div class="card card-widget widget-user">
+                            <div class="widget-user-header bg-info" style="background:#B2BEB5;height:168px">
+                              <div class="widget-header border-0 pb-0">
+                              <div class="d-flex align-items-center float-left">
+                              <div class="d-grid">
+                                  <div class="badge bg-primary p-2 px-3 rounded">
+                                  </div>
+                              </div>
+                      </div>
+                <div class="widget-header-right float-right">
+                    <div class="dropdown">
+                        <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+    
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            
+                        
+                            <a href="view_clients" class="dropdown-item"><i class="fa fa-eye"></i> View</a>
+    
+                            <button class="dropdown-item usereditid" type="button" data-id=""><i class="far fa-edit"></i> Edit</button>
+    
+                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
+    
+    
+                            <button class="dropdown-item rpassword" type="button" data-toggle="modal" data-id=""><i class="fa fa-key"></i> Reset
+                                Password</button>
+                                    <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
+                             
+                                <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
+                        </div>
+                    </div>
                 </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled</label>
-                  <select class="form-control select2bs4" disabled="disabled" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="select2bs4" multiple="multiple" data-placeholder="Select a State"
-                          style="width: 100%;">
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled Result</label>
-                  <select class="form-control select2bs4" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
             </div>
-            <!-- /.row -->
+                <div style="display:inline-block;width: 100%;">
+                    <a href="view_clients" style="color:white"> <h3 class="widget-user-username"></h3></a>
+                    <a href="view_clients" style="color:white"> <h5 class="widget-user-desc"></h5></a>
+                </div>
+                
+                </div>
+                <div class="widget-user-image" style="top:112px">
+                    <a href="view_clients" target="_blank">
+                    
+                            <img alt="user-image" class="img-circle elevation-2" src="dist\img\avatar5.png" style="height:100px;width:100px;">
+                        </a>
+                </div>
+        <div class="card-footer">
+        <div class="row">
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">3,200</h5>
+        <span class="description-text">Total ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">13,000</h5>
+        <span class="description-text">Business ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4">
+        <div class="description-block">
+        <h5 class="description-header">35</h5>
+        <span class="description-text">GST</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+        </div>
+                </div>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
@@ -277,41 +278,104 @@
 
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Bootstrap Duallistbox</h3>
-
+            <h3 class="card-title">ITR</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
               </button>
               
             </div>
-            <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
+             <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
+
+            
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="duallistbox" multiple="multiple">
-                    <option selected>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+              
+                <div class="col-md-4 col-sm-6">
+                              <div class="card card-widget widget-user">
+                            <div class="widget-user-header bg-info" style="background:#B2BEB5;height:168px">
+                              <div class="widget-header border-0 pb-0">
+                              <div class="d-flex align-items-center float-left">
+                              <div class="d-grid">
+                                  <div class="badge bg-primary p-2 px-3 rounded">
+                                  </div>
+                              </div>
+                      </div>
+                <div class="widget-header-right float-right">
+                    <div class="dropdown">
+                        <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+    
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            
+                        
+                            <a href="view_clients" class="dropdown-item"><i class="fa fa-eye"></i> View</a>
+    
+                            <button class="dropdown-item usereditid" type="button" data-id=""><i class="far fa-edit"></i> Edit</button>
+    
+                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
+    
+    
+                            <button class="dropdown-item rpassword" type="button" data-toggle="modal" data-id=""><i class="fa fa-key"></i> Reset
+                                Password</button>
+                                    <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
+                             
+                                <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
+                        </div>
+                    </div>
                 </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
             </div>
-            <!-- /.row -->
+                <div style="display:inline-block;width: 100%;">
+                    <a href="view_clients" style="color:white"> <h3 class="widget-user-username"></h3></a>
+                    <a href="view_clients" style="color:white"> <h5 class="widget-user-desc"></h5></a>
+                </div>
+                
+                </div>
+                <div class="widget-user-image" style="top:112px">
+                    <a href="view_clients" target="_blank">
+                    
+                            <img alt="user-image" class="img-circle elevation-2" src="dist\img\avatar5.png" style="height:100px;width:100px;">
+                        </a>
+                </div>
+        <div class="card-footer">
+        <div class="row">
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">3,200</h5>
+        <span class="description-text">Total ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">13,000</h5>
+        <span class="description-text">Business ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4">
+        <div class="description-block">
+        <h5 class="description-header">35</h5>
+        <span class="description-text">GST</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+        </div>
+                </div>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Visit <a href="https://github.com/istvan-ujjmeszaros/bootstrap-duallistbox#readme">Bootstrap Duallistbox</a> for more examples and information about
+            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
             the plugin.
           </div>
         </div>
