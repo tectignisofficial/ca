@@ -89,14 +89,14 @@ include("config.php");
 
         <!-- Navbar -->
         <?php  
-        include("header.php");
+        include("include/header.php");
         ?>
 
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <?php 
-        include("sidebar.php");
+        include("include/sidebar.php");
         ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -231,7 +231,7 @@ include("config.php");
         </div>
         <!-- /.content-wrapper -->
         <?php
-        include("footer.php");
+        include("include/footer.php");
         ?>
 
 
