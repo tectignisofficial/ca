@@ -1,356 +1,542 @@
+<?php
+include("config.php");
+?>
 
+ 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Advanced form elements</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin CA | Dashboard</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-  <!-- BS Stepper -->
-  <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css">
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+
+    <style>
+        .card-header-right {
+            right: 10px;
+            top: 10px;
+            float: right;
+            padding: 0;
+            position: absolute;
+        }
+
+        .btn-addnew-project {
+            border: 1px solid #e2e1e1;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: calc(100% - 15px);
+            justify-content: center;
+        }
+
+        .card {
+            border-radius: 15px !important;
+        }
+
+        .badge,
+        .btn {
+            border-radius: 10px !important;
+        }
+      
+        .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding-bottom: 27px !important;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: #d3d9df;
+}
+    </style>
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <?php
-  include("header.php");
-  ?>
-  <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <?php
-  include("sidebar.php");
-  ?>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Customer Register</h1>
-          </div>
-         
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- SELECT2 EXAMPLE -->
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Customer</h3>
+        <!-- Navbar -->
+        <?php  
+        include("header.php");
+        ?>
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <form method="POST" enctype="multipart/form-data">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Name:
-                  </label>
-                  <input type="text" name="name" class="form-control">
-                </div>
-              </div>
+        <!-- /.navbar -->
 
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Pancard No:
-                  <input type="text" name="name" class="form-control">
-                  </label>
-                  
-                  <div class="custom-file">
-                        <input type="file"  name="pan" id="exampleInputFile" class="form-control">
-                       
-                      </div>
-                       
-                </div>
-              </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-              
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Mobile Number:
-                  </label>
-                  <input type="tel" name="contact" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Aadhar Card:
-                  </label>
-                  <div class="custom-file">
-                        <input type="file"  name="aadhar" id="exampleInputFile" class="form-control">
-                       
-                      </div>
-                </div>
-              </div>
-             
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Email ID:
-                  </label>
-                  <input type="email" name="email" class="form-control">
-                </div>
-              </div>
-             
-            </div>
-           <button name="submit"class="btn btn-primary">Submit</button>
-           
-            <!-- /.row -->
-          </div>
-</form>
-          <!-- /.card-body -->
-         
-        </div>
-        <!-- /.card -->
-       
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
+        <!-- Main Sidebar Container -->
+        <?php 
+        include("sidebar.php");
+        ?>
 
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Manage Customer</h1>
+                            <ol class="breadcrumb float-sm-left">
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Customer</li>
+                            </ol>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >    <i class="fa fa-plus"></i></button></li>
+                               
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                              <div class="card card-widget widget-user">
+        <div class="widget-user-header bg-info"style="background:#B2BEB5;height:168px" style="height:168px;">
+            <div class="widget-header border-0 pb-0">
+                <div class="d-flex align-items-center float-left">
+                    <div class="d-grid">
+                        <div class="badge bg-primary p-2 px-3 rounded">
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header-right float-right">
+                    <div class="dropdown">
+                        <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
     
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php
-  include("footer.php");
-  ?>
-</div>
-<!-- ./wrapper -->
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            
+                        
+                            <a href="view_clients" class="dropdown-item"
+                           ><i class="fa fa-eye"></i> View</a>
+    
+                            <button class="dropdown-item usereditid" type="button"  data-id=""><i class="far fa-edit"></i> Edit</button>
+    
+                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
+    
+    
+                            <button class="dropdown-item rpassword" type="button" data-toggle="modal"
+                            data-id="" ><i class="fa fa-key"></i> Reset
+                                Password</button>
+                                    <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
+                             
+                                <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div style="display:inline-block;width: 100%;">
+       <a href="view_clients" style="color:white"> <h3 class="widget-user-username"></h3></a>
+       <a href="view_clients" style="color:white"> <h5 class="widget-user-desc"></h5></a>
+        </div>
+        
+        </div>
+        <div class="widget-user-image" style="top:112px">
+            <a href="view_clients" target="_blank">
+               
+                    <img alt="user-image" class="img-circle elevation-2"
+                        src="dist\img\avatar5.png" style="height:100px;width:100px;">
+                </a>
+        </div>
+        <div class="card-footer">
+        <div class="row">
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">3,200</h5>
+        <span class="description-text">Total ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4 border-right">
+        <div class="description-block">
+        <h5 class="description-header">13,000</h5>
+        <span class="description-text">Business ITR</span>
+        </div>
+        
+        </div>
+        
+        <div class="col-sm-4">
+        <div class="description-block">
+        <h5 class="description-header">35</h5>
+        <span class="description-text">GST</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+        </div>
+                </div>
+                        <div class="col-md-4 col-sm-6 text-center">
+                            <a href="#" class="btn-addnew-project" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="" data-ajax-popup="true" data-size="lg" data-title="Create User" data-url=""
+                                data-toggle="modal" data-target="#exampleModal" data-bs-original-title="Create User">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <h6 class="mt-4 mb-2">New Customer</h6>
+                                <p class="text-muted text-center">Click here to add New Customer</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Main row -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-<!-- BS-Stepper -->
-<script src="plugins/bs-stepper/js/bs-stepper.min.js"></script>
-<!-- dropzonejs -->
-<script src="plugins/dropzone/min/dropzone.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <?php
+        include("footer.php");
+        ?>
 
-<!-- Page specific script -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="resetUserPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" >
+                <div class="modal-body body2">
+                   
+                 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submi" id="submi" class="btn btn-primary">Update</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="dnkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Client Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post">
+                <div class="modal-body body1" >
+                    
+                  
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Customer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        <div class="row">
+                          
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputName">Customer Name</label>
+                                    <input type="text" name="name" class="form-control" id="inputName"
+                                        placeholder="Enter Name">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Category</label>               
+                                    <select class="form-control"  name="category" id="inputcategory">
+                                        <option selected disabled>Select category</option>
+                                        <option>Individual</option>
+                                        <option>Business</option>
+                                    </select>
+                                </div>
+
+                                
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                    <input type="email" name="email" class="form-control" id="inputEmail"
+                                        placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputPass">Mobile Number</label>
+                                    <input type="text" minlength="10" maxlength="10" class="form-control" name="number" id="number" placeholder="Mobile Number" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <label for="inputEmail">Pan Card Number</label>
+                                    <input type="text" name="pan" class="form-control" id="pan"
+                                        placeholder="Enter Pan card Number">
+                                </div>                                
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputPass">Pan Card Image</label>
+                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                        placeholder="image">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <label for="inputEmail">Adhar Card Number</label>
+                                    <input type="text" name="pan" class="form-control" id="pan"
+                                        placeholder="Enter Adhar card Number">
+                                </div>                                
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputPass">Adhar Card Image</label>
+                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                        placeholder="image">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputPass">Profile Image</label>
+                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                        placeholder="image">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                </div>
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.js"></script>
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <!-- AdminLTE for demo purposes -->
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="dist/js/pages/dashboard.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="plugins/select2/js/select2.full.min.js"></script>
+
+
+
+    <script>
+        function deleteBtn() {
+
+            swal({
+                title: "Are You Sure...?",
+                text: "This action can not be undone. Do you want to continue?",
+                icon: "warning",
+                buttons: ["No", "Yes"],
+            });
+
+            mobile_err = true;
+
+            mobile_check();
+
+            if (mobile_err = true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
+    
+    <script>
+          $(document).ready(function(){
+          $('.usereditid').click(function(){
+            let dnk = $(this).data('id');
+
+            $.ajax({
+            url: 'action_clients.php',
+            type: 'post',
+            data: {dnk: dnk},
+            success: function(response1){ 
+              $('.body1').html(response1);
+              $('#dnkModal').modal('show'); 
+            }
+          });
+          });
+
+          $('.rpassword').click(function(){
+            let resetpass = $(this).data('id');
+
+            $.ajax({
+            url: 'action_clients.php',
+            type: 'post',
+            data: {resetpass: resetpass},
+            success: function(response1){ 
+              $('.body2').html(response1);
+              $('#resetUserPass').modal('show'); 
+            }
+          });
+          });
+
+          });
+          </script>
+
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+            $(document).ready(function(){
+                $('.delbtn').click(function(e){
+                    e.preventDefault();
+                    let del_id = $(this).data('id');
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            });
+                            window.location.href = "action_clients.php?del_id"+del_id;
+                        } else {
+                            swal("Your imaginary file is safe!");
+                        }
+                    });
+                    })
+                });
+                </script>
+                <script type="text/javascript">
+    $(function () {
+        $("#submi").click(function () {
+            var password = $("#resetPass").val();
+            var confirmPassword = $("#confirmResetPass").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
     });
-  });
 </script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-
-    //Date and time picker
-    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    })
-
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    })
-
-  })
-  // BS-Stepper Init
-  document.addEventListener('DOMContentLoaded', function () {
-    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-  })
-
-  // DropzoneJS Demo Code Start
-  Dropzone.autoDiscover = false
-
-  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-  var previewNode = document.querySelector("#template")
-  previewNode.id = ""
-  var previewTemplate = previewNode.parentNode.innerHTML
-  previewNode.parentNode.removeChild(previewNode)
-
-  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-    url: "/target-url", // Set the url
-    thumbnailWidth: 80,
-    thumbnailHeight: 80,
-    parallelUploads: 20,
-    previewTemplate: previewTemplate,
-    autoQueue: false, // Make sure the files aren't queued until manually added
-    previewsContainer: "#previews", // Define the container to display the previews
-    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-  })
-
-  myDropzone.on("addedfile", function(file) {
-    // Hookup the start button
-    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
-  })
-
-  // Update the total progress bar
-  myDropzone.on("totaluploadprogress", function(progress) {
-    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-  })
-
-  myDropzone.on("sending", function(file) {
-    // Show the total progress bar when upload starts
-    document.querySelector("#total-progress").style.opacity = "1"
-    // And disable the start button
-    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-  })
-
-  // Hide the total progress bar when nothing's uploading anymore
-  myDropzone.on("queuecomplete", function(progress) {
-    document.querySelector("#total-progress").style.opacity = "0"
-  })
-
-  // Setup the buttons for all transfers
-  // The "add files" button doesn't need to be setup because the config
-  // `clickable` has already been specified.
-  document.querySelector("#actions .start").onclick = function() {
-    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-  }
-  document.querySelector("#actions .cancel").onclick = function() {
-    myDropzone.removeAllFiles(true)
-  }
-  // DropzoneJS Demo Code End
-</script>
 </body>
+
 </html>
