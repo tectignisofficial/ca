@@ -1,5 +1,53 @@
 <?php
-include("config.php");
+include("include/config.php");
+// if(isset($_GET['delsr_no'])){
+//     $sr_no=mysqli_real_escape_string($conn,$_GET['delsr_no']);
+//     $sql=mysqli_query($conn,"delete from product_gallery where id='$sr_no'");
+//     if($sql=1){
+//       header("location:customer.php");
+//     }
+//   }
+if(isset($_POST['submit']))
+{
+  
+  $name = $_POST['name'];
+  $category = $_POST['category'];
+  $email = $_POST['email'];
+  $number = $_POST['number'];
+  $pan = $_POST['pan'];
+  $aadhar = $_POST['aadhar'];
+    $image=$_FILES['image']['name'];
+    $image1=$_FILES['image1']['name'];
+    $p_image=$_FILES['p_image']['name'];
+   
+          $image=md5($image);
+    $dnk=$_FILES['image']['tmp_name'];
+    $loc="dist/img/credit/".$image;
+    move_uploaded_file($dnk,$loc);
+        
+    
+          $image1=md5($image1);
+    $dnk1=$_FILES['image1']['tmp_name'];
+    $loc2="dist/img/credit/".$image1;
+    move_uploaded_file($dnk1,$loc2);
+        
+ 
+          $p_image=md5($p_image);
+    $dnk2=$_FILES['p_image']['tmp_name'];
+    $loc2="dist/img/credit/".$p_image;
+    move_uploaded_file($dnk2,$loc2);
+        
+            
+    $sql="INSERT INTO `customer_registration`(`name`, `category`, `email`, `number`, `pan`, `image`, `aadhar`, `image1`, `p_image`) VALUES ('$name','$category','$email','$number','$pan','$image','$aadhar','$image1','$p_image')";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   }
+    else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+
+
 ?>
 
  
@@ -280,7 +328,7 @@ include("config.php");
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">`
                 <div class="modal-body body1" >
                     
                   
@@ -351,28 +399,28 @@ include("config.php");
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Pan Card Image</label>
-                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                    <input type="file" name="image" class="form-control" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" id="inputimg"
                                         placeholder="image">
                                 </div>
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <label for="inputEmail">Adhar Card Number</label>
-                                    <input type="text" name="pan" class="form-control" id="pan"
+                                    <input type="text" name="aadhar" class="form-control" id="pan"
                                         placeholder="Enter Adhar card Number">
                                 </div>                                
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Adhar Card Image</label>
-                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                    <input type="file" name="image1" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
                                         placeholder="image">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Profile Image</label>
-                                    <input type="file" name="image" class="form-control" id="inputimg"
+                                    <input type="file" name="p_image" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
                                         placeholder="image">
                                 </div>
                             </div>

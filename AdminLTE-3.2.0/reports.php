@@ -127,7 +127,7 @@ include("config.php");
           <div class="packageresult">
 
             <div class="card">
-                <div class="col-12 my-4">
+                <div class="col-12 my-3">
                   <div class="row text-center justify-content-center">
                     <label class="col-2">Select &nbsp; ITR &nbsp; User</label>
                     <select class="form-control col-4" name="category" id="inputcategory">
@@ -136,7 +136,7 @@ include("config.php");
                       <option>Business</option>
                     </select>
                   </div>
-                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" name="submit" id="submit" value="login">Submit</button>
+                  <button class="btn btn-primary" style="float:right;" type="submit" name="submit" id="submit" value="login">Submit</button>
                 </div>
             </div>
 
