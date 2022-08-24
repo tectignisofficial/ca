@@ -1,15 +1,14 @@
 <?php
-include("config.php");
+include("include/config.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <base href="/tectignis_crm/admin/" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin CRM | Dashboard</title>
+  <title>Admin CA | Reports</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -108,11 +107,10 @@ include("config.php");
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Invoices</h1>
+              <h1 class="m-0">Reports</h1>
               <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Clients</a></li>
-                <li class="breadcrumb-item active">Clients Details</li>
+                <li class="breadcrumb-item"><a href="index.php">Reports</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
