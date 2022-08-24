@@ -328,7 +328,7 @@ if(isset($_POST['submit']))
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" enctype="multipart/form-data">`
+                <form method="post" enctype="multipart/form-data">
                 <div class="modal-body body1" >
                     
                   
@@ -354,9 +354,11 @@ if(isset($_POST['submit']))
                     </button>
                 </div>
                 <div class="modal-body">
+                
                     <form method="post" action="" enctype="multipart/form-data">
+                    
                         <div class="row">
-                          
+                        
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputName">Customer Name</label>
@@ -430,7 +432,9 @@ if(isset($_POST['submit']))
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="submit" class="btn btn-primary">Create</button>
                 </div>
+               
                     </form>
+                   
                 </div>
                
             </div>
