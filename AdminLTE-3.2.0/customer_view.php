@@ -67,6 +67,8 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
+
+
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default collapsed-card">
             <div class="card-header">
@@ -75,19 +77,11 @@
                 <button type="button" class="btn btn-tool" aria-expanded="false" data-card-widget="collapse">
                   <i class="fas fa-plus"></i>
                 </button>
-
               </div>
-
-
-
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="row justify-content-end mt-0">
-                <button type="button" class="btn btn-primary float-right " data-toggle="modal"
-                  data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
-              </div>
               <div class="row">
                 <div class="col-md-4 col-sm-6">
                   <div class="card card-widget widget-user">
@@ -130,7 +124,7 @@
             <div class="card-body">
               <div class="row justify-content-end mt-0">
                 <button type="button" class="btn btn-primary float-right " data-toggle="modal"
-                  data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
+                  data-target="#businessITR" style="margin-right: 5px;">+ Add ITR</button>
               </div>
               <div class="row">
 
@@ -209,10 +203,6 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="row justify-content-end mt-0">
-                <button type="button" class="btn btn-primary float-right " data-toggle="modal"
-                  data-target="#exampleModal" style="margin-right: 5px;">+ Add ITR</button>
-              </div>
               <div class="row">
 
                 <div class="col-md-4 col-sm-6">
@@ -233,13 +223,13 @@
                 </div>
               </div>
             </div>
-          
-          <!-- /.card-body -->
-          <div class="card-footer">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
-            about
-            the plugin.
-          </div>
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
+              about
+              the plugin.
+            </div>
           </div>
         </div>
         <!-- /.card -->
@@ -251,12 +241,113 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="businessITR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ADD ITR DETAILS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center" id="btnGST">
+              <button type="button" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
+            </div>
+            <div class="row" id="GST" style="display:none;">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row justify-content-center">
+                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeGST()">Remove Gst</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <?php
   include("include/footer.php");
   ?>
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+
+  <script>
+    function addGST() {
+      document.getElementById("btnGST").setAttribute("style", "display:none;");
+      document.getElementById("GST").removeAttribute("style");
+      // document.getElementById("btnGST").removeAttribute("style");
+    }
+    function removeGST() {
+      document.getElementById("GST").setAttribute("style", "display:none;");
+      document.getElementById("btnGST").removeAttribute("style");
+      // document.getElementById("btnGST").removeAttribute("style");
+    }
+  </script>
 
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
