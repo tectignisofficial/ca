@@ -1,3 +1,28 @@
+<?php
+include("include/config.php");
+
+if(isset($_POST['submit']))
+{
+  $category = $_POST['category'];
+  $name = $_POST['name'];
+  $designation = $_POST['designation'];
+  $adress = $_POST['adress'];
+  $number = $_POST['number'];
+  $c_person = $_POST['c_person'];
+    
+        
+            
+    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`) VALUES ('$category','$name','$designation','$adress','$number','$c_person')";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   }
+    else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,12 +112,17 @@
                   <div class="card card-widget widget-user">
                     <div class="widget-user-header" style="background:#B2BEB5;">
                       <div style="display:inline-block;width: 100%;">
+                      <?php     
+                    $sql=mysqli_query($conn,"select * from customer_registration");
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
                         <a href="view_clients" style="color:#000;">
-                          <h3 class="widget-user-desc">Vedant Naidu</h3>
+                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
                         </a>
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
                         </a>
+                        <?php }  ?>
                       </div>
                     </div>
                   </div>
@@ -133,12 +163,19 @@
                     <div class="widget-user-header" style="background:#B2BEB5;">
 
                       <div style="display:inline-block;width: 100%;">
+                      <?php     
+                    $sql=mysqli_query($conn,"select * from business_registration");
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
+                      
                         <a href="view_clients" style="color:#000;">
-                          <h3 class="widget-user-desc">Business Name</h3>
+                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
                         </a>
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
                         </a>
+                        <?php }  ?>
+                        
                       </div>
 
 
@@ -255,12 +292,13 @@
             </button>
           </div>
           <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-12">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>Category</label>
+                  <input type="text" class="form-control" name="category" placeholder="Enter ...">
                 </div>
               </div>
             </div>
@@ -268,15 +306,15 @@
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>Firm Name</label>
+                  <input type="text" class="form-control" name="name" placeholder="Enter ...">
                 </div>
               </div>
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>Designation</label>
+                  <input type="text" class="form-control" name="designation" placeholder="Enter ...">
                 </div>
               </div>
             </div>
@@ -284,20 +322,27 @@
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>Adress</label>
+                  <textarea class="form-control" name="adress"></textarea>
                 </div>
               </div>
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>Contact Number</label>
+                  <input type="number" class="form-control" name="number" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Contact Person</label>
+                  <input type="number" class="form-control" name="c_person" placeholder="Enter ...">
                 </div>
               </div>
             </div>
             <div class="row justify-content-center" id="btnGST">
-              <button type="button" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
+              <button type="button" name="" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
             </div>
             <div class="row" id="GST" style="display:none;">
               <div class="col-sm-6">
@@ -320,10 +365,12 @@
                 </div>
               </div>
             </div>
+          
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
