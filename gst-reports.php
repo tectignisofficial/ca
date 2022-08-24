@@ -110,7 +110,7 @@ include("include/config.php");
               <h1 class="m-0">Reports</h1>
               <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Reports</a></li>
+                <li class="breadcrumb-item"><a href="index.php">GST</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -127,14 +127,16 @@ include("include/config.php");
             <div class="card">
                 <div class="col-12 my-3">
                   <div class="row text-center justify-content-center">
-                    <label class="col-2">Select &nbsp; ITR &nbsp; User</label>
+                    <label class="col-2">Select GST User</label>
                     <select class="form-control col-4" name="category" id="inputcategory">
-                      <option selected disabled>Select ITR User</option>
+                      <option selected disabled>Select GST User</option>
                       <option>Individual</option>
                       <option>Business</option>
                     </select>
                   </div>
-                  <button class="btn btn-primary" style="float:right;" type="submit" name="submit" id="submit" value="login">Submit</button>
+                  <div style="text-align:center; margin-top:inherit;">
+                  <button class="btn btn-primary" style="float:middle;" type="submit" name="submit" id="submit" value="login">Submit</button>
+                  </div>
                 </div>
             </div>
 
@@ -142,7 +144,7 @@ include("include/config.php");
               <!-- <div class="row"> -->
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Reports</h3>
+                    <h3 class="card-title">GST Reports</h3>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
