@@ -6,7 +6,7 @@ if(isset($_POST['login'])){
     $Password1=mysqli_real_escape_string($conn,$_POST['password']);
     $nEmail=filter_var($Email,FILTER_SANITIZE_STRING);
     $nPassword1=filter_var($Password1,FILTER_SANITIZE_STRING);
-    $sql=mysqli_query($conn,"select * from login where Email='$nEmail'");
+    $sql=mysqli_query($conn,"call calogin('$nEmail')");
     if(mysqli_num_rows($sql)>0){
         $row=mysqli_fetch_assoc($sql);
         $verify=password_verify($nPassword1,$row['password']);
@@ -67,15 +67,7 @@ if(isset($_POST['login'])){
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
-    <?php
-  include("include/header.php");
-  ?>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <?php
-  include("include/sidebar.php");
-  ?>
+   
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -119,9 +111,7 @@ if(isset($_POST['login'])){
     
 
     <!-- /.content-wrapper -->
-    <?php
-  include("include/footer.php");
-  ?>
+    
   </div>
   <!-- ./wrapper -->
 
