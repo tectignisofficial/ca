@@ -148,10 +148,16 @@ include("include/config.php");
                   </div>
                 </div>
             </div>
+          </div>
+          <!-- </div> -->
+          <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="package1result">
 
-              <!-- Main row -->
-              <!-- <div class="row"> -->
-                <div class="card">
+          <div class="card">
                   <div class="card-header">
                     <h3 class="card-title">Business ITR Reports</h3>
                   </div>
@@ -159,7 +165,7 @@ include("include/config.php");
                   <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
-                      <tr>
+                       <tr>
                           <th>Sr No.</th>
                           <th>Years</th>
                           <th>Total Income</th>
@@ -170,31 +176,31 @@ include("include/config.php");
                       </thead>
                       <tbody >
                   
-                  <?php     
-                    $sql=mysqli_query($conn,"select * from ITR");
-                    $count=1;
-                    while($arr=mysqli_fetch_array($sql)){
-                    ?>
-                  <tr >
-                    <td><?php echo $count;?></td>
-                    <td><?php echo $arr['years'];?></td>
-                    <td><?php echo $arr['total_income'];?></td>
-                    <td><?php echo $arr['tds_refund'];?></td>
-                    <td><?php echo $arr['tax_paid'];?></td>
-                    <td><?php echo $arr['itr_upload'];?></td>                   
-                  </tr>                 
-                  <?php $count++; }  ?>
-                  </tbody>
+                        <?php     
+                          $sql=mysqli_query($conn,"select * from ITR");
+                          $count=1;
+                          while($arr=mysqli_fetch_array($sql)){
+                          ?>
+                        <tr >
+                          <td><?php echo $count;?></td>
+                          <td><?php echo $arr['years'];?></td>
+                          <td><?php echo $arr['total_income'];?></td>
+                          <td><?php echo $arr['tds_refund'];?></td>
+                          <td><?php echo $arr['tax_paid'];?></td>
+                          <td><?php echo $arr['itr_upload'];?></td>                   
+                        </tr>                 
+                          <?php $count++; }  ?>
+                      </tbody>
                     </table>
                   </div>
                   <!-- /.card-body -->
-                </div>
-
+      </div>
           </div>
           <!-- </div> -->
           <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
       </section>
+      
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
