@@ -132,7 +132,8 @@ include("include/config.php");
                     <?php 
                    $query=mysqli_query($conn,"select * from customer_registration");
                    ?>
-                    <select class="form-control"  onChange="package(this.value)" name="category" id="inputcategory">
+                   <div class="col-4">
+                    <select  class="form-control"  onChange="package(this.value)" name="category" id="inputcategory">
                       <option selected disabled>Select ITR User</option>
                       <?php
                     while($sql=mysqli_fetch_array($query))
@@ -141,12 +142,10 @@ include("include/config.php");
                       <option value="<?php echo $sql['id']; ?>"> <?php echo $sql['name']; ?></option>
                          <?php } ?>
                     </select>
-                    
+                    </div>
                   </div>
                  
-                  <div style="text-align:center; margin-top:inherit;">
-                  <button class="btn btn-primary" style="float:middle;" type="submit" name="submit" id="submit" value="login">Submit</button>
-                  </div>
+                  
                 </div>
             </div>
 
