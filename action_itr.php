@@ -1,3 +1,4 @@
+<!-- itr_report -->
 <?php
 include("include/config.php");
 ?>
@@ -32,6 +33,8 @@ if(isset($_POST['packa'])){
     echo'</tbody>'
     ?>
 
+
+<!-- Business_itr_report -->
 <?php
 if(isset($_POST['packa1'])){
     $name=$_POST['packa1'];
@@ -52,11 +55,11 @@ if(isset($_POST['packa1'])){
     echo "
     <tr>
     <td>". $row['id'] ."</td>
-            <td>". $row['years'] ."</td>
+            <td>". $row['year'] ."</td>
             <td>".$row['total_income']."</td>
             <td>".$row['tds_refund'] ."</td>
             <td>".$row['tax_paid'] ."</td>
-            <td>".$row['itr_upload'] ."</td>      
+            <td>".$row['bitr_uplode'] ."</td>      
     </tr> 
     ";
     }   
