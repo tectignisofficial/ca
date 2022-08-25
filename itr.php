@@ -1,3 +1,32 @@
+<?php
+include("include/config.php");
+
+if(isset($_POST['submit']))
+{
+  
+  $years = $_POST['years'];
+  $total_income = $_POST['total_income'];
+  $tds_refund = $_POST['tds_refund'];
+  $tax_paid = $_POST['tax_paid'];
+    $itr_upload=$_FILES['itr_upload']['name'];
+   
+          $itr_upload=md5($itr_upload);
+    $dnk=$_FILES['itr_upload']['tmp_name'];
+    $loc="dist/img/credit/".$itr_upload;
+    move_uploaded_file($dnk,$loc);
+        
+    $sql="INSERT INTO `ITR`(`years`, `total_income`, `tds_refund`, `tax_paid`, `itr_upload`) VALUES ('$years','$total_income','$tds_refund','$tax_paid','$itr_upload')";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   }
+    else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,28 +142,27 @@
                             <th>TDS Refund</th>
                             <th>Tax Paid</th>
 
-                            <th>Action</th>
+                            <th>ITR_Upload</th>
                           </tr>
                         </thead>
 
 
                         <tbody id="leads" class="packresult">
 
-                          <tr>
-                            <td>1</td>
-                            <td>2022</td>
-                            <td>details</td>
-                            <td>details</td>
-                            <td>details</td>
-
-                            <td><a href="#"><button type="button" class="btn btn-primary btn-md"
-                                  style="color: aliceblue"> <i class="fas fa-eye"></i></button></a>
-
-                              <a href="form1.php?delsr_no=<?php echo $arr['id']; ?>"><button type="button"
-                                  class="btn btn-danger btn-md" style="color: aliceblue"> <i
-                                    class="fas fa-trash"></i></button></a></td>
-
-                          </tr>
+                        <?php     
+                    $sql=mysqli_query($conn,"select * from ITR");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
+                  <tr >
+                    <td><?php echo $count;?></td>
+                    <td><?php echo $arr['years'];?></td>
+                    <td><?php echo $arr['total_income'];?></td>
+                    <td><?php echo $arr['tds_refund'];?></td>
+                    <td><?php echo $arr['tax_paid'];?></td>
+                    <td><img src="dist/img/credit/<?php echo $arr['itr_upload'];?>" style="height:80px; width:80px;"/></td>                   
+                  </tr>                 
+                  <?php $count++; }  ?>
 
                         </tbody>
                       </table>
@@ -163,37 +191,35 @@
 
       <!-- Modal body -->
         <div class="modal-body">
+        <form method="post" enctype="multipart/form-data">
+
           <div class="card-body">
           <div class="row">
             <div class="col-6">
+      
                 <!-- Date -->
                 <div class="form-group">
-                  <label>Year:</label>
-                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                          <div class="input-group-append" data-target="#reservationdate"    data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                  </div>
+                        <label>Year</label>
+                        <input type="text" class="form-control" name="years">
                 </div>
             </div>
             <div class="col-6">
                 <!-- Date and time -->
                 <div class="form-group">
                         <label>Total Income</label>
-                        <input type="text" class="form-control" name="income">
+                        <input type="text" class="form-control" name="total_income">
                 </div>
             </div>
             <div class="col-6">
                   <div class="form-group">
-                        <label>TDS Return</label>
-                        <input type="text" class="form-control" name="tds">
+                        <label>TDS Refund</label>
+                        <input type="text" class="form-control" name="tds_refund">
                   </div>
             </div>
             <div class="col-6">
                   <div class="form-group">
                         <label>Tax Paid</label>
-                        <input type="text" class="form-control" name="tax">
+                        <input type="text" class="form-control" name="tax_paid">
                   </div>
                   <!-- /.input group -->
             </div>
@@ -202,12 +228,10 @@
                       <label>ITR upload</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" name="file" for="exampleInputFile">Choose file</label>
+                        <input type="file" class="custom-file-input" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" name="itr_upload" id="exampleInputFile">
+                        <label class="custom-file-label"  for="exampleInputFile">Choose file</label>
                       </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
+                      
                     </div>
                   </div>
             </div>
@@ -215,9 +239,9 @@
                   
                 <!-- /.form group -->
           </div>
-          <button type="button" class="btn btn-primary" style="float:right" name="submit" data-bs-dismiss="modal">Submit</button>
+          <button type="submit" class="btn btn-primary" style="float:right" name="submit" data-bs-dismiss="modal">Submit</button>
         </div>
-
+    </form>
       <!-- Modal footer -->
      
 
