@@ -270,6 +270,8 @@ include("include/config.php");
           }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
         });
+      </script>
+
       <script>
 function package(val){
     $.ajax({
@@ -278,6 +280,7 @@ function package(val){
       data:{packa:val},
       success:function(data){
         $("#example1").html(data);
+        alert(val)
       }
     
     });
