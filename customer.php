@@ -199,7 +199,7 @@ if(isset($_POST['submit']))
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             
                         
-                            <a href="view.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
+                            <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
                            ><i class="fa fa-eye"></i> View</a>
     
                             <button class="dropdown-item usereditid" type="button"  data-id=""><i class="far fa-edit"></i> Edit</button>
@@ -216,7 +216,7 @@ if(isset($_POST['submit']))
                         </div>
                     </div>
                 </div>
-                <a href="view.php?customerId=<?php echo $row['cus_no'] ?>" style="color:black;"> <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4></a>
+                <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" style="color:black;"> <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4></a>
             </div>
         
         

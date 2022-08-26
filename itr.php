@@ -1,6 +1,6 @@
 <?php
 include("include/config.php");
-
+$customer_id=$_GET['customerId'];
 if(isset($_POST['submit']))
 {
   
@@ -81,39 +81,66 @@ if(isset($_POST['submit']))
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Advanced Form</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Advanced Form</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
       <section class="content-header">
         <div class="container-fluid">
 
           <div class="row">
             <div class="col-12">
               <div class="card">
+              <?php     
+                    $sql=mysqli_query($conn,"select * from customer_registration where cus_no='$customer_id'");
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
                 <div class="card-header">
                   <div class="row">
                     <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
+                      
+                      <label>Customer Name:</label>
+                      <label><?php echo $arr['name'];?></label>
                     </div>
                     <div class="col-6">
-                    <h5>Customer Details: All Details</h5>
+                    <label>Customer Category:</label>
+                      <label><?php echo $arr['category'];?></label>
+                    
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
-                    <h5>Customer Details: All Details</h5>
+                      <label>Customer Email:</label>
+                      <label><?php echo $arr['email'];?></label>
+                    
                     </div>
                     <div class="col-6">
-                    <h5>Customer Details: All Details</h5>
+                   
+                    <label>Customer  Pancard No:</label>
+                      <label><?php echo $arr['pan'];?></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
-                    <h5>Customer Details: All Details</h5>
+                    
+                    <label>Customer  Aadhar No:</label>
+                      <label><?php echo $arr['aadhar'];?></label>
                     </div>
-                    <div class="col-6">
-                    <h5>Customer Details: All Details</h5>
-                    </div>
+                   
                   </div>
                 </div>
-
+                <?php }  ?>
               </div>
             </div>
 
@@ -142,7 +169,7 @@ if(isset($_POST['submit']))
                             <th>TDS Refund</th>
                             <th>Tax Paid</th>
 
-                            <th>ITR_Upload</th>
+                            <th>ITR_File</th>
                           </tr>
                         </thead>
 
@@ -160,7 +187,7 @@ if(isset($_POST['submit']))
                     <td><?php echo $arr['total_income'];?></td>
                     <td><?php echo $arr['tds_refund'];?></td>
                     <td><?php echo $arr['tax_paid'];?></td>
-                    <td><img src="dist/img/credit/<?php echo $arr['itr_upload'];?>" style="height:80px; width:80px;"/></td>                   
+                    <td><button type="button" class="btn btn-sm btn-info m-1 useredit " ><i class="fa fa-eye"></i></button></td>                   
                   </tr>                 
                   <?php $count++; }  ?>
 
