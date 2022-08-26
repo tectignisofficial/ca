@@ -3,7 +3,6 @@ include("include/config.php");
 $customer_id=$_GET['customerId'];
 if(isset($_POST['submit']))
 {
-  $customer= $_POST['customer'];
   $category = $_POST['category'];
   $name = $_POST['name'];
   $designation = $_POST['designation'];
@@ -13,7 +12,7 @@ if(isset($_POST['submit']))
     
         
             
-    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`, `cus_no`) VALUES ('$category','$name','$designation','$adress','$number','$c_person','$customer')";
+    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`) VALUES ('$category','$name','$designation','$adress','$number','$c_person')";
     if (mysqli_query($conn, $sql)){
       echo "<script> alert ('New record has been added successfully !');</script>";
    }
@@ -110,22 +109,21 @@ if(isset($_POST['submit']))
             <div class="card-body">
               <div class="row">
               <?php     
-                    $sql=mysqli_query($conn,"select * from customer_registration where cus_no=$customer_id");
+                    $sql=mysqli_query($conn,"select * from customer_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
                   <div class="card card-widget widget-user">
                     <div class="widget-user-header" style="background:#B2BEB5;">
                       <div style="display:inline-block;width: 100%;">
-                  
+                      
                         <a href="view_clients" style="color:#000;">
                           <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
                         </a>
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
                         </a>
-                       
-
+                      
                       </div>
                     </div>
                   </div>
@@ -134,7 +132,11 @@ if(isset($_POST['submit']))
               </div>
             </div>
             <!-- /.card-body -->
-            
+            <div class="card-footer">
+              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
+              about
+              the plugin.
+            </div>
           </div>
           <!-- /.card -->
 
@@ -158,7 +160,7 @@ if(isset($_POST['submit']))
               </div>
               <div class="row">
               <?php     
-                    $sql=mysqli_query($conn,"select * from business_registration where cus_no=$customer_id");
+                    $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
@@ -166,7 +168,7 @@ if(isset($_POST['submit']))
                     <div class="widget-user-header" style="background:#B2BEB5;">
 
                       <div style="display:inline-block;width: 100%;">
-                    
+                      
                       
                         <a href="view_clients" style="color:#000;">
                           <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
@@ -174,17 +176,19 @@ if(isset($_POST['submit']))
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
                         </a>
-                        
-                  </div>
-                </div>
-                    
+                      </div>
+                    </div> 
                   </div>
                 </div>
                 <?php }  ?>
               </div>
             </div>
             <!-- /.card-body -->
-           
+            <div class="card-footer">
+              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
+              about
+              the plugin.
+            </div>
           </div>
           <!-- /.card -->
 
@@ -223,7 +227,11 @@ if(isset($_POST['submit']))
             </div>
 
             <!-- /.card-body -->
-           
+            <div class="card-footer">
+              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
+              about
+              the plugin.
+            </div>
           </div>
         </div>
         <!-- /.card -->
@@ -265,10 +273,7 @@ if(isset($_POST['submit']))
                 <div class="form-group">
                   <label>Firm Name</label>
                   <input type="text" class="form-control" name="name" placeholder="Enter ...">
-                  <input type="text" class="form-control" name="customer" value="<?php echo $customer_id ?>" name="name" placeholder="Enter ...">
-
                 </div>
-                
               </div>
               <div class="col-sm-6">
                 <!-- text input -->

@@ -177,6 +177,11 @@ if(isset($_POST['submit']))
                 <div class="container-fluid">
 
                     <div class="row">
+                    <?php
+                    $sql=mysqli_query($conn,"SELECT * FROM customer_registration");
+                    $count=1;
+                  while ($row=mysqli_fetch_array($sql)){ 
+          ?>
                         <div class="col-md-4 col-sm-4">
                               <div class="card card-widget widget-user">
      <div class="widget-user-header bg-info"style="background:#B2BEB5;height:67px" style="height:95px;">
@@ -194,7 +199,7 @@ if(isset($_POST['submit']))
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             
                         
-                            <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
+                            <a href="view.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
                            ><i class="fa fa-eye"></i> View</a>
     
                             <button class="dropdown-item usereditid" type="button"  data-id=""><i class="far fa-edit"></i> Edit</button>
@@ -211,7 +216,7 @@ if(isset($_POST['submit']))
                         </div>
                     </div>
                 </div>
-                <a href="view_clients" style="color:black;"> <h4 class="widget-user-desc">kajal</h4></a>
+                <a href="view.php?customerId=<?php echo $row['cus_no'] ?>" style="color:black;"> <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4></a>
             </div>
         
         
@@ -248,6 +253,7 @@ if(isset($_POST['submit']))
         </div>
     </div>
                 </div>
+                <?php } ?>
                     </div>
                     <!-- Main row -->
 
