@@ -176,7 +176,7 @@ if(isset($_POST['submit']))
                           <td><?php echo $arr['total_income'];?></td>
                           <td><?php echo $arr['tds_refund'];?></td>
                           <td><?php echo $arr['tax_paid'];?></td>
-                          <td><button type="button" class="btn btn-sm btn-info m-1 useredit " ><i class="fa fa-eye"></i></button></td>                   
+                          <td><button type="button" class="btn btn-sm btn-info m-1 customerview" data-bs-toggle="modal" data-bs-target="#myModal" ><i class="fa fa-eye"></i></button></td>                   
                           </tr>                 
                           <?php $count++; }  ?>
 
@@ -313,6 +313,25 @@ if(isset($_POST['submit']))
   <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <!-- Page specific script -->
+  <script>
+    $(document).ready(function () {
+      $('.customerview').click(function () {
+        let view = $(this).data('id');
+
+        $.ajax({
+          url: 'itr.php',
+          type: 'post',
+          data: {
+            view: view
+          },
+          success: function (response1) {
+            $('.body1').html(response1);
+            $('#myModal').modal('show');
+          }
+        });
+      });
+    });
+  </script>
   <script>
     $(function () {
       $("#example1").DataTable({
