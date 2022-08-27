@@ -245,7 +245,7 @@ if(isset($_POST['submit']))
                       <label>ITR upload</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" name="itr_upload" id="exampleInputFile">
+                        <input type="file" class="custom-file-input" accept="image/pdf" name="itr_upload" id="exampleInputFile">
                         <label class="custom-file-label"  for="exampleInputFile">Choose file</label>
                       </div>
                       
