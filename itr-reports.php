@@ -126,15 +126,16 @@ include("include/config.php");
         <div class="row">
           <div class="container-fluid">
             <div class="packageresult">
-            <form style="font-size:20px" method="post">
-              <div class="card pt-3">
-                <div class="row text-center justify-content-center radiobttn" style="padding-right:30px">
+              <form style="font-size:20px" method="post">
+                <div class="card pt-3">
+                  <div class="row text-center justify-content-center radiobttn" style="padding-right:30px">
                     <input type="radio" style="margin-right:8px" id="customer" name="fav_language" value="Customer">
                     <label for="customer">Customer</label>
-                    <input type="radio"  style="margin-right:8px; margin-left:5%" id="company" name="fav_language" value="company">
+                    <input type="radio" style="margin-right:8px; margin-left:5%" id="company" name="fav_language"
+                      value="company">
                     <label for="company">Company</label>
-                </div>
-                <div class="row px-4">
+                  </div>
+                  <div class="row px-4">
                     <div class="col-8 my-3">
                       <div class="row">
 
@@ -184,8 +185,8 @@ include("include/config.php");
                       <button class="btn btn-primary" style="float:right" type="submit" name="submit" id="submit"
                         value="submit">Submit</button>
                     </div>
+                  </div>
                 </div>
-              </div>
               </form>
               <!-- **Customer** -->
               <?php
@@ -235,18 +236,19 @@ include("include/config.php");
                         <td><?php echo $arr['total_income'];?></td>
                         <td><?php echo $arr['tds_refund'];?></td>
                         <td><?php echo $arr['tax_paid'];?></td>
-                        <td><button type="button" class="btn-sm-btn-info m-1 customerview" data-toggle="modal"><i class="fa fa-eye"></i></td>
+                        <td><button type="button" class="btn-sm-btn-info m-1 customerview" data-toggle="modal"
+                            data-target="#viewModal"><i class="fa fa-eye"></i></td>
                       </tr>
                       <?php $count++; }  ?>
                     </tbody>
                   </table>
                 </div>
               </div>
-<?php 
+              <?php 
  }
  else if($fav_language=='company'){
    ?>
-   <div class="card">
+              <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">ITR Reports</h3>
                 </div>
@@ -259,7 +261,7 @@ include("include/config.php");
                         <th>company_name</th>
                         <th>phone_no</th>
                         <th>email</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
@@ -279,14 +281,14 @@ include("include/config.php");
                         <td><?php echo $arr['company_name'];?></td>
                         <td><?php echo $arr['phone_no'];?></td>
                         <td><?php echo $arr['email'];?></td>
-                        
+
                       </tr>
                       <?php $count++; }  ?>
                     </tbody>
                   </table>
                 </div>
               </div>
- <?php } } ?>
+              <?php } } ?>
             </div>
 
           </div>
@@ -313,102 +315,69 @@ include("include/config.php");
 
   <!-- Button trigger modal -->
   <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewModalLabel">Create Customer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                
-                    <form method="post" action="" enctype="multipart/form-data">
-                    
-                        <div class="row">
-                        
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="inputName">Customer Name</label>
-                                    <input type="text" name="name" class="form-control" id="inputName"
-                                        placeholder="Enter Name">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label>Category</label>               
-                                    <select class="form-control"  name="category" id="inputcategory">
-                                        <option selected disabled>Select category</option>
-                                        <option>Individual</option>
-                                        <option>Business</option>
-                                    </select>
-                                </div>
-
-                                
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                <label for="inputEmail">Email</label>
-                                    <input type="email" name="email" class="form-control" id="inputEmail"
-                                        placeholder="Enter Email">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="inputPass">Mobile Number</label>
-                                    <input type="text" minlength="10" maxlength="10" class="form-control" name="number" id="number" placeholder="Mobile Number" required>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                            <div class="form-group">
-                                <label for="inputEmail">Pan Card Number</label>
-                                    <input type="text" name="pan" class="form-control" id="pan"
-                                        placeholder="Enter Pan card Number">
-                                </div>                                
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="inputPass">Pan Card Image</label>
-                                    <input type="file" name="image" class="form-control" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" id="inputimg"
-                                        placeholder="image">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                            <div class="form-group">
-                                <label for="inputEmail">Adhar Card Number</label>
-                                    <input type="text" name="aadhar" class="form-control" id="pan"
-                                        placeholder="Enter Adhar card Number">
-                                </div>                                
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="inputPass">Adhar Card Image</label>
-                                    <input type="file" name="image1" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
-                                        placeholder="image">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="inputPass">Profile Image</label>
-                                    <input type="file" name="p_image" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
-                                        placeholder="image">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" class="btn btn-primary">Create</button>
-                </div>
-               
-                    </form>
-                   
-                </div>
-               
-            </div>
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewModalLabel">Reports</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+
+          <form method="post" action="" enctype="multipart/form-data">
+            <div class="row">
+              <table id="" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Sr No.</th>
+                    <th>Customer Name</th>
+                    <th>Mobile No.</th>
+                    <th>ITR</th>
+                    <th>Years</th>
+                    <th>Total Income</th>
+                    <th>TDS Refund</th>
+                    <th>Tax Paid</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                       <?php   
+                   if($category=='allcustomer'){
+                   $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no");
+                      } 
+                    else{
+                   $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no WHERE ITR.customer_id='$category'");}
+                    $count=1;
+                   while($arr=mysqli_fetch_array($sql)){
+                    ?>
+                  <tr>
+                    <td><?php echo $count;?></td>
+                    <td><?php echo $arr['name'];?></td>
+                    <td><?php echo $arr['number'];?></td>
+                    <td>yes</td>
+                    <td><?php echo $arr['years'];?></td>
+                    <td><?php echo $arr['total_income'];?></td>
+                    <td><?php echo $arr['tds_refund'];?></td>
+                    <td><?php echo $arr['tax_paid'];?></td>
+                  </tr>
+                  <?php $count++; }  ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="submit" class="btn btn-primary">Create</button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
     </div>
+  </div>
 
 
   <!-- jQuery -->
@@ -507,23 +476,25 @@ include("include/config.php");
     }
   </script>
 
-<script>
-          $(document).ready(function(){
-          $('.customerview').click(function(){
-            let view = $(this).data('id');
+  <script>
+    $(document).ready(function () {
+      $('.customerview').click(function () {
+        let view = $(this).data('id');
 
-            $.ajax({
-            url: 'itr_reports.php',
-            type: 'post',
-            data: {view: view},
-            success: function(response1){ 
-              $('.body1').html(response1);
-              $('#viewModal').modal('show'); 
-            }
-          });
-          });
-          });
-          </script>
+        $.ajax({
+          url: 'itr_reports.php',
+          type: 'post',
+          data: {
+            view: view
+          },
+          success: function (response1) {
+            $('.body1').html(response1);
+            $('#viewModal').modal('show');
+          }
+        });
+      });
+    });
+  </script>
 
   <script>
     $(document).ready(function () {
