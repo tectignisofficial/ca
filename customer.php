@@ -7,6 +7,15 @@ include("include/config.php");
 //       header("location:customer.php");
 //     }
 //   }
+
+if(isset($_GET['customer'])){
+    $id=$_GET['customer'];
+    $sql=mysqli_query($conn,"update customer_registration set status='Deactivated' where cus_no='$id'");
+}
+if(isset($_GET['decustomer'])){
+    $id=$_GET['decustomer'];
+    $sql=mysqli_query($conn,"update customer_registration set status='Activated' where cus_no='$id'");
+};
 if(isset($_POST['submit']))
 {
   $name = $_POST['name'];
@@ -185,7 +194,7 @@ if(isset($_POST['submit']))
           ?>
                         <div class="col-md-4 col-sm-4">
                               <div class="card card-widget widget-user">
-     <div class="widget-user-header bg-info"style="background:#B2BEB5;height:67px" style="height:95px;">
+     <div class="widget-user-header" <?php if($row['status']=='Deactivated'){ ?> style="background:#b1b3b6;" <?php }else{ ?>style="background: #17a2b8;" <?php } ?>  style="">
             <div class="widget-header border-0 pb-0" >
             
                 
@@ -205,12 +214,15 @@ if(isset($_POST['submit']))
     
                             <button class="dropdown-item usereditid" type="button"  data-id="<?php echo $row['cus_no'] ?>"><i class="far fa-edit"></i> Edit</button>
     
-                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
-    
-    
-                                    <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
-                             
-                                <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
+                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id="=<?php echo $row['cus_no']; ?>"><i class="fa fa-trash-alt"></i> Delete</button>
+
+                            <?php
+                                if($row['status']=='Activated'){ ?>
+                                    <a href="customer.php?customer=<?php echo $row['cus_no'] ?>" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
+                                    <?php } else{
+                                ?>                             
+                                <a href="customer.php?decustomer=<?php echo $row['cus_no'] ?>" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>
+                                <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -504,7 +516,7 @@ if(isset($_POST['submit']))
             let dnk = $(this).data('id');
 
             $.ajax({
-            url: '',
+            url: 'action-customer.php',
             type: 'post',
             data: {dnk: dnk},
             success: function(response1){ 
@@ -513,21 +525,6 @@ if(isset($_POST['submit']))
             }
           });
           });
-
-          $('.rpassword').click(function(){
-            let resetpass = $(this).data('id');
-
-            $.ajax({
-            url: 'action_clients.php',
-            type: 'post',
-            data: {resetpass: resetpass},
-            success: function(response1){ 
-              $('.body2').html(response1);
-              $('#resetUserPass').modal('show'); 
-            }
-          });
-          });
-
           });
           </script>
 
@@ -548,7 +545,7 @@ if(isset($_POST['submit']))
                             swal("Poof! Your imaginary file has been deleted!", {
                                 icon: "success",
                             });
-                            window.location.href = "action_clients.php?del_id"+del_id;
+                            window.location.href = "action-customer.php?del_id"+del_id;
                         } else {
                             swal("Your imaginary file is safe!");
                         }
