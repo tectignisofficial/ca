@@ -236,8 +236,8 @@ include("include/config.php");
                         <td><?php echo $arr['total_income'];?></td>
                         <td><?php echo $arr['tds_refund'];?></td>
                         <td><?php echo $arr['tax_paid'];?></td>
-                        <td><a href="<?php echo $arr['itr_upload'];?>"> <button type="button" class="btn-sm-btn-info m-1 customerview" 
-                           ><i class="fa fa-eye"></i></button></td>
+                        <td><button type="button" class="btn-sm-btn-info m-1 customerview" data-toggle="modal"
+                            data-target="#exampleModal"><i class="fa fa-eye"></i></button></td>
                       </tr>
                       <?php $count++; }  ?>
                     </tbody>
@@ -300,7 +300,7 @@ include("include/config.php");
       <!-- Main content -->
       <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+
     <?php
         include("include/footer.php");
         ?>
@@ -314,36 +314,30 @@ include("include/config.php");
   </div>
 
   <!-- Button trigger modal -->
-  <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="viewModalLabel">Reports</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+  
 
-          <form method="post" action="" enctype="multipart/form-data">
-            <div class="row">
-             
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" name="submit" class="btn btn-primary">Create</button>
-            </div>
-
-          </form>
-
-        </div>
-
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="height:700px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    
+              <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="100%"
+                style="border:none;"></iframe>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-
-
+</div>
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->

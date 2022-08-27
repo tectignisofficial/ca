@@ -87,44 +87,44 @@ if(isset($_POST['submit']))
           <div class="row">
             <div class="col-12">
               <div class="card">
-              <?php     
+                <?php     
                     $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="card-header">
                   <div class="row">
                     <div class="col-6">
-                      
+
                       <label>Customer Name:</label>
                       <label><?php echo $arr['name'];?></label>
                     </div>
                     <div class="col-6">
-                    <label>Customer Category:</label>
+                      <label>Customer Category:</label>
                       <label><?php echo $arr['category'];?></label>
-                    
+
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
                       <label>Customer designation:</label>
                       <label><?php echo $arr['designation'];?></label>
-                    
+
                     </div>
                     <div class="col-6">
-                   
-                    <label>Customer  	adress:</label>
+
+                      <label>Customer adress:</label>
                       <label><?php echo $arr['adress'];?></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
-                    
-                    <label>Customer  Mobile No:</label>
+
+                      <label>Customer Mobile No:</label>
                       <label><?php echo $arr['number'];?></label>
                     </div>
                     <div class="col-6">
-                    
-                    <label>Customer  Contact No:</label>
+
+                      <label>Customer Contact No:</label>
                       <label><?php echo $arr['c_person'];?></label>
                     </div>
                   </div>
@@ -150,7 +150,8 @@ if(isset($_POST['submit']))
                     <div class="col-7 col-sm-12">
 
                       <table id="example1" class="table table-bordered table-striped">
-                        <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal" data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
+                        <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
+                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
                         <thead>
                           <tr>
                             <th>Sr No.</th>
@@ -171,18 +172,20 @@ if(isset($_POST['submit']))
                           $count=1;
                           while($arr=mysqli_fetch_array($sql)){
                           ?>
-                          <tr >
-                          <td><?php echo $count;?></td>
-                          <td><?php echo $arr['year'];?></td>
-                          <td><?php echo $arr['total_income'];?></td>
-                          <td><?php echo $arr['tds_refund'];?></td>
-                          <td><?php echo $arr['tax_paid'];?></td>
-                          <td><button type="button" class="btn btn-sm btn-info m-1 customerview" data-bs-toggle="modal" data-bs-target="#myModal" ><i class="fa fa-eye"></i> </button></td>                   
-                          </tr>  
-                                      
+                          <tr>
+                            <td><?php echo $count;?></td>
+                            <td><?php echo $arr['year'];?></td>
+                            <td><?php echo $arr['total_income'];?></td>
+                            <td><?php echo $arr['tds_refund'];?></td>
+                            <td><?php echo $arr['tax_paid'];?></td>
+                            <td><button type="button" class="btn btn-sm btn-info m-1 customerview"
+                                data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-eye"></i> </button>
+                            </td>
+                          </tr>
+
                           <?php $count++; }  ?>
 
-                          </tbody>
+                        </tbody>
                       </table>
                     </div>
 
@@ -198,29 +201,30 @@ if(isset($_POST['submit']))
       </section>
     </div>
     <div class="modal" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">PDF File</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-        <div class="modal-body">
-
-          <div class="card-body">
-          <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="200px" style="border:none;">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">PDF File</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
-         
-        </div>
-      <!-- Modal footer -->
-     
 
+          <!-- Modal body -->
+          <div class="modal-body">
+
+            <div class="card-body">
+              <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="200px"
+                style="border:none;"></iframe>
+            </div>
+
+          </div>
+          <!-- Modal footer -->
+
+
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <!-- /.content-wrapper -->
     <?php
