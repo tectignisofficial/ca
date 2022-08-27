@@ -202,7 +202,7 @@ if(isset($_POST['submit']))
                             <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
                            ><i class="fa fa-eye"></i> View</a>
     
-                            <button class="dropdown-item usereditid" type="button"  data-id="<?php echo $row[''] ?>"><i class="far fa-edit"></i> Edit</button>
+                            <button class="dropdown-item usereditid" type="button"  data-id="<?php echo $row['cus_no'] ?>"><i class="far fa-edit"></i> Edit</button>
     
                             <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
     
@@ -311,8 +311,7 @@ if(isset($_POST['submit']))
                     </button>
                 </div>
                 <form method="post" enctype="multipart/form-data">
-                <div class="modal-body body1">
-                                      
+                <div class="modal-body body1">                                      
                     
                 </div>
                 <div class="modal-footer">
