@@ -177,8 +177,9 @@ if(isset($_POST['submit']))
                           <td><?php echo $arr['total_income'];?></td>
                           <td><?php echo $arr['tds_refund'];?></td>
                           <td><?php echo $arr['tax_paid'];?></td>
-                          <td><button type="button" class="btn btn-sm btn-info m-1 customerview" data-bs-toggle="modal" data-bs-target="#myModal" ><i class="fa fa-eye"></i></button></td>                   
-                          </tr>                 
+                          <td><button type="button" class="btn btn-sm btn-info m-1 customerview" data-bs-toggle="modal" data-bs-target="#myModal" ><i class="fa fa-eye"></i> </button></td>                   
+                          </tr>  
+                                      
                           <?php $count++; }  ?>
 
                           </tbody>
@@ -202,63 +203,18 @@ if(isset($_POST['submit']))
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">PDF File</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
         <div class="modal-body">
-        <form method="post" enctype="multipart/form-data">
 
           <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-      
-                <!-- Date -->
-                <div class="form-group">
-                        <label>Year</label>
-                        <input type="text" class="form-control" name="year">
-                </div>
-            </div>
-            <div class="col-6">
-                <!-- Date and time -->
-                <div class="form-group">
-                        <label>Total Income</label>
-                        <input type="text" class="form-control" name="total_income">
-                </div>
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>TDS Refund</label>
-                        <input type="text" class="form-control" name="tds_refund">
-                  </div>
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Tax Paid</label>
-                        <input type="text" class="form-control" name="tax_paid">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                      <label>ITR upload</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" accept="image/pdf" name="itr_upload" id="exampleInputFile">
-                        <label class="custom-file-label"  for="exampleInputFile">Choose file</label>
-                      </div>
-                      
-                    </div>
-                  </div>
-            </div>
-            </div>
-                  
-                <!-- /.form group -->
+          <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="200px" style="border:none;">
           </div>
-          <button type="submit" class="btn btn-primary" style="float:right" name="submit" data-bs-dismiss="modal">Submit</button>
+         
         </div>
-    </form>
       <!-- Modal footer -->
      
 
