@@ -5,10 +5,13 @@ include("include/config.php");
 <?php
 if(isset($_POST['packa'])){
     $name=$_POST['packa'];
-    $query=mysqli_query($conn,"SELECT * FROM `ITR` WHERE customer_id='$name'");
+    $query=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no WHERE ITR.customer_id='$name'");
     echo '  <thead>
     <tr>
       <th>Sr No.</th>
+      <th>Customer Name</th>
+      <th>Mobile No.</th>
+      <th>ITR</th>
       <th>Years</th>
       <th>Total Income</th>
       <th>TDS Refund</th>
@@ -22,6 +25,9 @@ if(isset($_POST['packa'])){
     echo "
     <tr>
     <td>". $row['id'] ."</td>
+            <td>". $row['name'] ."</td>
+            <td>". $row['number'] ."</td>
+            <td>". $row['yes'] ."</td>
             <td>". $row['years'] ."</td>
             <td>".$row['total_income']."</td>
             <td>".$row['tds_refund'] ."</td>

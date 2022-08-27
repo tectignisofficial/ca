@@ -523,7 +523,7 @@ if(isset($_POST['submit']))
             let dnk = $(this).data('id');
 
             $.ajax({
-            url: 'action_clients.php',
+            url: '',
             type: 'post',
             data: {dnk: dnk},
             success: function(response1){ 
