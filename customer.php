@@ -207,9 +207,6 @@ if(isset($_POST['submit']))
                             <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id=""><i class="fa fa-trash-alt"></i> Delete</button>
     
     
-                            <button class="dropdown-item rpassword" type="button" data-toggle="modal"
-                            data-id="" ><i class="fa fa-key"></i> Reset
-                                Password</button>
                                     <a href="clients?client=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
                              
                                 <a href="clients?declient=" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>  
