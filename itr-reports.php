@@ -230,14 +230,14 @@ include("include/config.php");
                       <tr>
                         <td><?php echo $count;?></td>
                         <td><?php echo $arr['name'];?></td>
-                        <td><?php echo $arr['number'];?></td>
+                        <td><?php echo $arr['number'];?></td>=
                         <td>yes</td>
                         <td><?php echo $arr['years'];?></td>
                         <td><?php echo $arr['total_income'];?></td>
                         <td><?php echo $arr['tds_refund'];?></td>
                         <td><?php echo $arr['tax_paid'];?></td>
-                        <td><button type="button" class="btn-sm-btn-info m-1 customerview" data-toggle="modal"
-                            data-target="#viewModal"><i class="fa fa-eye"></i></td>
+                        <td><a href="<?php echo $arr['itr_upload'];?>"> <button type="button" class="btn-sm-btn-info m-1 customerview" 
+                           ><i class="fa fa-eye"></i></button></td>
                       </tr>
                       <?php $count++; }  ?>
                     </tbody>
@@ -328,43 +328,7 @@ include("include/config.php");
 
           <form method="post" action="" enctype="multipart/form-data">
             <div class="row">
-              <table id="" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Sr No.</th>
-                    <th>Customer Name</th>
-                    <th>Mobile No.</th>
-                    <th>ITR</th>
-                    <th>Years</th>
-                    <th>Total Income</th>
-                    <th>TDS Refund</th>
-                    <th>Tax Paid</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                       <?php   
-                   if($category=='allcustomer'){
-                   $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no");
-                      } 
-                    else{
-                   $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no WHERE ITR.customer_id='$category'");}
-                    $count=1;
-                   while($arr=mysqli_fetch_array($sql)){
-                    ?>
-                  <tr>
-                    <td><?php echo $count;?></td>
-                    <td><?php echo $arr['name'];?></td>
-                    <td><?php echo $arr['number'];?></td>
-                    <td>yes</td>
-                    <td><?php echo $arr['years'];?></td>
-                    <td><?php echo $arr['total_income'];?></td>
-                    <td><?php echo $arr['tds_refund'];?></td>
-                    <td><?php echo $arr['tax_paid'];?></td>
-                  </tr>
-                  <?php $count++; }  ?>
-                </tbody>
-              </table>
+             
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
