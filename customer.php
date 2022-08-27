@@ -162,6 +162,7 @@ if(isset($_POST['submit']))
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
+                                <h4>Add Customer Details </h4>
                                 <li class="breadcrumb-item"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >    <i class="fa fa-plus"></i></button></li>
                                
                             </ol>
@@ -176,17 +177,19 @@ if(isset($_POST['submit']))
                 <div class="container-fluid">
 
                     <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                    <?php
+                    $sql=mysqli_query($conn,"SELECT * FROM customer_registration");
+                    $count=1;
+                  while ($row=mysqli_fetch_array($sql)){ 
+          ?>
+                        <div class="col-md-4 col-sm-4">
                               <div class="card card-widget widget-user">
-        <div class="widget-user-header bg-info"style="background:#B2BEB5;height:168px" style="height:168px;">
-            <div class="widget-header border-0 pb-0">
-                <div class="d-flex align-items-center float-left">
-                    <div class="d-grid">
-                        <div class="badge bg-primary p-2 px-3 rounded">
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-header-right float-right">
+     <div class="widget-user-header bg-info"style="background:#B2BEB5;height:67px" style="height:95px;">
+            <div class="widget-header border-0 pb-0" >
+            
+                
+                <div class="widget-header-right float-right" >
+                
                     <div class="dropdown">
                         <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -213,62 +216,44 @@ if(isset($_POST['submit']))
                         </div>
                     </div>
                 </div>
+                <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" style="color:black;"> <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4></a>
             </div>
-        <div style="display:inline-block;width: 100%;">
-       <a href="view_clients" style="color:white"> <h3 class="widget-user-username"></h3></a>
-       <a href="view_clients" style="color:white"> <h5 class="widget-user-desc"></h5></a>
-        </div>
         
-        </div>
-        <div class="widget-user-image" style="top:112px">
-            <a href="view_clients" target="_blank">
-               
-                    <img alt="user-image" class="img-circle elevation-2"
-                        src="dist\img\avatar5.png" style="height:100px;width:100px;">
-                </a>
-        </div>
-        <div class="card-footer">
-        <div class="row">
-        <div class="col-sm-4 border-right">
-        <div class="description-block">
-        <h5 class="description-header">3,200</h5>
-        <span class="description-text">Total ITR</span>
-        </div>
         
-        </div>
+    </div>
+       
+       
+            <div class="row">
+                <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                        <h6 class="description-header">3,200</h6>
+                        <span class="description-text">Total ITR</span>
+                    </div>
         
-        <div class="col-sm-4 border-right">
-        <div class="description-block">
-        <h5 class="description-header">13,000</h5>
-        <span class="description-text">Business ITR</span>
-        </div>
-        
-        </div>
-        
-        <div class="col-sm-4">
-        <div class="description-block">
-        <h5 class="description-header">35</h5>
-        <span class="description-text">GST</span>
-        </div>
-        
-        </div>
-        
-        </div>
-        
-        </div>
-        </div>
                 </div>
-                        <div class="col-md-4 col-sm-6 text-center">
-                            <a href="#" class="btn-addnew-project" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="" data-ajax-popup="true" data-size="lg" data-title="Create User" data-url=""
-                                data-toggle="modal" data-target="#exampleModal" data-bs-original-title="Create User">
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                                <h6 class="mt-4 mb-2">New Customer</h6>
-                                <p class="text-muted text-center">Click here to add New Customer</p>
-                            </a>
-                        </div>
+        
+                <div class="col-sm-5 border-right">
+                    <div class="description-block">
+                        <h6 class="description-header">13,000</h6>
+                        <span class="description-text">Business ITR</span>
+                    </div>
+        
+                </div>
+        
+                <div class="col-sm-3">
+                    <div class="description-block">
+                        <h6 class="description-header">35</h6>
+                        <span class="description-text">GST</span>
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+    </div>
+                </div>
+                <?php } ?>
                     </div>
                     <!-- Main row -->
 

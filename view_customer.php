@@ -1,8 +1,9 @@
 <?php
 include("include/config.php");
-
+$customer_id=$_GET['customerId'];
 if(isset($_POST['submit']))
 {
+    $customer=$_POST['customer'];
   $category = $_POST['category'];
   $name = $_POST['name'];
   $designation = $_POST['designation'];
@@ -12,7 +13,7 @@ if(isset($_POST['submit']))
     
         
             
-    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`) VALUES ('$category','$name','$designation','$adress','$number','$c_person')";
+    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`,`cus_no`) VALUES ('$category','$name','$designation','$adress','$number','$c_person','$customer')";
     if (mysqli_query($conn, $sql)){
       echo "<script> alert ('New record has been added successfully !');</script>";
    }
@@ -95,7 +96,7 @@ if(isset($_POST['submit']))
 
 
           <!-- SELECT2 EXAMPLE -->
-          <div class="card card-default collapsed-card">
+          <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">Personal ITR</h3>
               <div class="card-tools">
@@ -108,33 +109,31 @@ if(isset($_POST['submit']))
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
-                <div class="col-md-4 col-sm-6">
-                  <div class="card card-widget widget-user">
-                    <div class="widget-user-header" style="background:#B2BEB5;">
-                      <div style="display:inline-block;width: 100%;">
-                      <?php     
-                    $sql=mysqli_query($conn,"select * from customer_registration");
+              <?php     
+                    $sql=mysqli_query($conn,"select * from customer_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
-                        <a href="view_clients" style="color:#000;">
+                <div class="col-md-4 col-sm-6">
+                  <div class="card card-widget widget-user">
+                    <div class="widget-user-header" >
+                      <div style="display:inline-block;width: 100%;">
+                      
+                        <a href="itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                           <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
                         </a>
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
                         </a>
-                        <?php }  ?>
+                      
                       </div>
                     </div>
                   </div>
                 </div>
+                <?php }  ?>
               </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
-              about
-              the plugin.
-            </div>
+           
           </div>
           <!-- /.card -->
 
@@ -152,78 +151,39 @@ if(isset($_POST['submit']))
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="row justify-content-end mt-0">
-                <button type="button" class="btn btn-primary float-right " data-toggle="modal"
+              <div class="row justify-content-end mt-0"style="
+    margin-bottom: 20px;
+">
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal"
                   data-target="#businessITR" style="margin-right: 5px;">+ Add ITR</button>
               </div>
               <div class="row">
-
-                <div class="col-md-4 col-sm-6">
-                  <div class="card card-widget widget-user">
-                    <div class="widget-user-header" style="background:#B2BEB5;">
-
-                      <div style="display:inline-block;width: 100%;">
-                      <?php     
-                    $sql=mysqli_query($conn,"select * from business_registration");
+              <?php     
+                    $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
+                <div class="col-md-4 col-sm-6">
+                  <div class="card card-widget widget-user">
+                    <div class="widget-user-header" >
+
+                      <div style="display:inline-block;width: 100%;">
                       
-                        <a href="view_clients" style="color:#000;">
+                      
+                        <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                           <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
                         </a>
                         <a href="view_clients">
                           <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
                         </a>
-                        <?php }  ?>
-                        
                       </div>
-
-
-                    </div>
-                    <!-- <div class="widget-user-image" style="top:112px">
-                      <a href="view_clients" target="_blank">
-                        <img alt="user-image" class="img-circle elevation-2" src="dist\img\avatar5.png"
-                          style="height:100px;width:100px;">
-                      </a>
-                    </div> -->
-                    <!-- <div class="card-footer">
-                      <div class="row">
-                        <div class="col-sm-4 border-right">
-                          <div class="description-block">
-                            <h5 class="description-header">3,200</h5>
-                            <span class="description-text">Total ITR</span>
-                          </div>
-
-                        </div>
-
-                        <div class="col-sm-4 border-right">
-                          <div class="description-block">
-                            <h5 class="description-header">13,000</h5>
-                            <span class="description-text">Business ITR</span>
-                          </div>
-
-                        </div>
-
-                        <div class="col-sm-4">
-                          <div class="description-block">
-                            <h5 class="description-header">35</h5>
-                            <span class="description-text">GST</span>
-                          </div>
-
-                        </div>
-
-                      </div>
-                    </div> -->
+                    </div> 
                   </div>
                 </div>
+                <?php }  ?>
               </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
-              about
-              the plugin.
-            </div>
+           
           </div>
           <!-- /.card -->
 
@@ -262,11 +222,7 @@ if(isset($_POST['submit']))
             </div>
 
             <!-- /.card-body -->
-            <div class="card-footer">
-              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information
-              about
-              the plugin.
-            </div>
+           
           </div>
         </div>
         <!-- /.card -->
@@ -308,6 +264,7 @@ if(isset($_POST['submit']))
                 <div class="form-group">
                   <label>Firm Name</label>
                   <input type="text" class="form-control" name="name" placeholder="Enter ...">
+                  <input type="hidden" class="form-control" name="customer" value="<?php echo $customer_id ?>" placeholder="Enter ...">
                 </div>
               </div>
               <div class="col-sm-6">
