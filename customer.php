@@ -9,30 +9,31 @@ include("include/config.php");
 //   }
 if(isset($_POST['submit']))
 {
-  
   $name = $_POST['name'];
   $category = $_POST['category'];
   $email = $_POST['email'];
   $number = $_POST['number'];
   $pan = $_POST['pan'];
   $aadhar = $_POST['aadhar'];
+
     $image=$_FILES['image']['name'];
     $image1=$_FILES['image1']['name'];
     $p_image=$_FILES['p_image']['name'];
    
-          $image=md5($image);
+    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+    $image=md5($image).$extension;
     $dnk=$_FILES['image']['tmp_name'];
     $loc="dist/img/credit/".$image;
     move_uploaded_file($dnk,$loc);
         
-    
-          $image1=md5($image1);
+    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+          $image1=md5($image1).$extension;
     $dnk1=$_FILES['image1']['tmp_name'];
     $loc2="dist/img/credit/".$image1;
     move_uploaded_file($dnk1,$loc2);
         
- 
-          $p_image=md5($p_image);
+    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+          $p_image=md5($p_image).$extension;
     $dnk2=$_FILES['p_image']['tmp_name'];
     $loc2="dist/img/credit/".$p_image;
     move_uploaded_file($dnk2,$loc2);

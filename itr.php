@@ -8,12 +8,13 @@ if(isset($_POST['submit']))
   $total_income = $_POST['total_income'];
   $tds_refund = $_POST['tds_refund'];
   $tax_paid = $_POST['tax_paid'];
-    $itr_upload=$_FILES['itr_upload']['name'];
-   
-          $itr_upload=md5($itr_upload);
-    $dnk=$_FILES['itr_upload']['tmp_name'];
-    $loc="dist/img/credit/".$itr_upload;
-    move_uploaded_file($dnk,$loc);
+  $itr_upload=$_FILES['itr_upload']['name'];
+  $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+
+  $itr_upload=md5($itr_upload).$extension;
+  $dnk=$_FILES['itr_upload']['tmp_name'];
+  $loc="dist/img/credit/".$itr_upload;
+  move_uploaded_file($dnk,$loc);
         
     $sql="INSERT INTO `ITR`(`years`, `total_income`, `tds_refund`, `tax_paid`, `itr_upload`) VALUES ('$years','$total_income','$tds_refund','$tax_paid','$itr_upload')";
     if (mysqli_query($conn, $sql)){
