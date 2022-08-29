@@ -230,7 +230,7 @@ include("include/config.php");
                       <tr>
                         <td><?php echo $count;?></td>
                         <td><?php echo $arr['name'];?></td>
-                        <td><?php echo $arr['number'];?></td>=
+                        <td><?php echo $arr['number'];?></td>
                         <td>yes</td>
                         <td><?php echo $arr['years'];?></td>
                         <td><?php echo $arr['total_income'];?></td>
