@@ -232,7 +232,7 @@ include("include/config.php");
                         <td><?php echo $arr['name'];?></td>
                         <td><?php echo $arr['number'];?></td>
                         <td>yes</td>
-                        <td><?php echo $arr['years'];?></td>
+                        <td><?php echo $arr['year'];?></td>
                         <td><?php echo $arr['total_income'];?></td>
                         <td><?php echo $arr['tds_refund'];?></td>
                         <td><?php echo $arr['tax_paid'];?></td>
