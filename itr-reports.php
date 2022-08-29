@@ -220,10 +220,10 @@ include("include/config.php");
 
                       <?php   
                       if($category=='allcustomer'){
-                        $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no");
+                        $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.cus_no=customer_registration.cus_no");
                       } 
                       else{
-                    $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.customer_id=customer_registration.cus_no WHERE ITR.customer_id='$category'");}
+                    $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.cus_no=customer_registration.cus_no WHERE ITR.cus_no='$category'");}
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                     ?>

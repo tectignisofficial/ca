@@ -1,12 +1,6 @@
 <?php
 include("include/config.php");
-// if(isset($_GET['delsr_no'])){
-//     $sr_no=mysqli_real_escape_string($conn,$_GET['delsr_no']);
-//     $sql=mysqli_query($conn,"delete from product_gallery where id='$sr_no'");
-//     if($sql=1){
-//       header("location:customer.php");
-//     }
-//   }
+
 
 if(isset($_GET['customer'])){
     $id=$_GET['customer'];
@@ -29,19 +23,19 @@ if(isset($_POST['submit']))
     $image1=$_FILES['image1']['name'];
     $p_image=$_FILES['p_image']['name'];
    
-    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+    $extension=substr($image,strlen($image)-4,strlen($image));   
     $image=md5($image).$extension;
     $dnk=$_FILES['image']['tmp_name'];
     $loc="dist/img/credit/".$image;
     move_uploaded_file($dnk,$loc);
         
-    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+    $extension=substr($image1,strlen($image1)-4,strlen($image1));   
           $image1=md5($image1).$extension;
     $dnk1=$_FILES['image1']['tmp_name'];
     $loc2="dist/img/credit/".$image1;
     move_uploaded_file($dnk1,$loc2);
         
-    $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
+    $extension=substr($p_image,strlen($p_image)-4,strlen($p_image));   
           $p_image=md5($p_image).$extension;
     $dnk2=$_FILES['p_image']['tmp_name'];
     $loc2="dist/img/credit/".$p_image;
@@ -60,7 +54,7 @@ if(isset($_POST['submit']))
 
 ?>
 
- 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,16 +118,18 @@ if(isset($_POST['submit']))
         .btn {
             border-radius: 10px !important;
         }
-      
+
         .select2-container--default .select2-selection--single {
-    background-color: #fff;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    padding-bottom: 27px !important;
-}
-.select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single {
-    border-color: #d3d9df;
-}
+            background-color: #fff;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding-bottom: 27px !important;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple,
+        .select2-container--default.select2-container--focus .select2-selection--single {
+            border-color: #d3d9df;
+        }
     </style>
 </head>
 
@@ -172,9 +168,10 @@ if(isset($_POST['submit']))
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <h4>Add Customer Details </h4>
-                                <li class="breadcrumb-item"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >    <i class="fa fa-plus"></i></button></li>
-                               
+                                <h4>Add Customer Details &nbsp;&nbsp;&nbsp;</h4>
+                                <li class="breadcrumb-item"><button class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal"> <i class="fa fa-plus"></i></button></li>
+
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -187,102 +184,117 @@ if(isset($_POST['submit']))
                 <div class="container-fluid">
 
                     <div class="row">
-                    <?php
-                    $sql=mysqli_query($conn,"SELECT * FROM customer_registration");
-                    $count=1;
-                  while ($row=mysqli_fetch_array($sql)){ 
-          ?>
+                        <?php
+                         $sql=mysqli_query($conn,"SELECT * FROM customer_registration");
+                        $count=1;
+                         while ($row=mysqli_fetch_array($sql)){ 
+                         ?>
                         <div class="col-md-4 col-sm-4">
-                              <div class="card card-widget widget-user">
-     <div class="widget-user-header" <?php if($row['status']=='Deactivated'){ ?> style="background:#b1b3b6;" <?php }else{ ?>style="background: #17a2b8;" <?php } ?>  style="">
-            <div class="widget-header border-0 pb-0" >
-            
-                
-                <div class="widget-header-right float-right" >
-                
-                    <div class="dropdown">
-                        <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-ellipsis-v"></i>
-                        </button>
-    
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            
-                        
-                            <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" class="dropdown-item"
-                           ><i class="fa fa-eye"></i> View</a>
-    
-                            <button class="dropdown-item usereditid" type="button"  data-id="<?php echo $row['cus_no'] ?>"><i class="far fa-edit"></i> Edit</button>
-    
-                            <button class="dropdown-item delbtn" type="button" onclick="deleteBtn()" data-id="=<?php echo $row['cus_no']; ?>"><i class="fa fa-trash-alt"></i> Delete</button>
+                            <div class="card card-widget widget-user">
+                                <div class="widget-user-header" <?php if($row['status']=='Deactivated'){ ?>
+                                    style="background:#b1b3b6;" <?php }else{ ?>style="background: #17a2b8;" <?php } ?>
+                                    style="">
+                                    <div class="widget-header border-0 pb-0">
 
-                            <?php
+
+                                        <div class="widget-header-right float-right">
+
+                                            <div class="dropdown">
+                                                <button class="btn" type="button" id="dropdownMenu2"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </button>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+
+                                                    <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>"
+                                                        class="dropdown-item"><i class="fa fa-eye"></i> View</a>
+
+                                                    <button class="dropdown-item usereditid" type="button"
+                                                        data-id="<?php echo $row['cus_no'] ?>"><i
+                                                            class="far fa-edit"></i> Edit</button>
+
+                                                    <button class="dropdown-item delbtn" type="button"
+                                                        onclick="deleteBtn()"
+                                                        data-id="=<?php echo $row['cus_no']; ?>"><i
+                                                            class="fa fa-trash-alt"></i> Delete</button>
+
+                                                    <?php
                                 if($row['status']=='Activated'){ ?>
-                                    <a href="customer.php?customer=<?php echo $row['cus_no'] ?>" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-off"></i> Deactivated</a>
-                                    <?php } else{
-                                ?>                             
-                                <a href="customer.php?decustomer=<?php echo $row['cus_no'] ?>" class="dropdown-item" type="button" data-id=""><i class="fas fa-toggle-on"></i> Activated</a>
-                                <?php } ?>
-                        </div>
-                    </div>
-                </div>
-                <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>" style="color:black;"> <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4></a>
-            </div>
-        
-        
-    </div>
-       
-       
-            <div class="row">
-                <div class="col-sm-4 border-right">
-                    <div class="description-block">
-                        <h6 class="description-header">3,200</h6>
-                        <span class="description-text">Total ITR</span>
-                    </div>
-        
-                </div>
-        
-                <div class="col-sm-5 border-right">
-                    <div class="description-block">
-                        <h6 class="description-header">13,000</h6>
-                        <span class="description-text">Business ITR</span>
-                    </div>
-        
-                </div>
-        
-                <div class="col-sm-3">
-                    <div class="description-block">
-                        <h6 class="description-header">35</h6>
-                        <span class="description-text">GST</span>
-                    </div>
-        
-                </div>
-        
-            </div>
-        
-        </div>
-    </div>
-                </div>
-                <?php } ?>
-                    </div>
-                    <!-- Main row -->
+                                                    <a href="customer.php?customer=<?php echo $row['cus_no'] ?>"
+                                                        class="dropdown-item" type="button" data-id=""><i
+                                                            class="fas fa-toggle-off"></i> Deactivated</a>
+                                                    <?php } else{
+                                ?>
+                                                    <a href="customer.php?decustomer=<?php echo $row['cus_no'] ?>"
+                                                        class="dropdown-item" type="button" data-id=""><i
+                                                            class="fas fa-toggle-on"></i> Activated</a>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="view_customer.php?customerId=<?php echo $row['cus_no'] ?>"
+                                            style="color:black;">
+                                            <h4 class="widget-user-desc"><?php echo $row['name'] ?></h4>
+                                        </a>
+                                    </div>
 
-                    <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <?php
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h6 class="description-header">3,200</h6>
+                                            <span class="description-text">Total ITR</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-5 border-right">
+                                        <div class="description-block">
+                                            <h6 class="description-header">13,000</h6>
+                                            <span class="description-text">Business ITR</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="description-block">
+                                            <h6 class="description-header">35</h6>
+                                            <span class="description-text">GST</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                   
+                </div>
+                <!-- Main row -->
+
+                <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <?php
         include("include/footer.php");
         ?>
 
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -299,15 +311,15 @@ if(isset($_POST['submit']))
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" >
-                <div class="modal-body body2">
-                   
-                 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" id="submit" class="btn btn-primary">Update</button>
-                </div>
+                <form method="post">
+                    <div class="modal-body body2">
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" id="submit" class="btn btn-primary">Update</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -324,13 +336,13 @@ if(isset($_POST['submit']))
                     </button>
                 </div>
                 <form method="post" enctype="multipart/form-data">
-                <div class="modal-body body1">                                      
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="update" class="btn btn-primary">Update</button>
-                </div>
+                    <div class="modal-body body1">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -347,11 +359,11 @@ if(isset($_POST['submit']))
                     </button>
                 </div>
                 <div class="modal-body">
-                
+
                     <form method="post" action="" enctype="multipart/form-data">
-                    
+
                         <div class="row">
-                        
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputName">Customer Name</label>
@@ -361,19 +373,19 @@ if(isset($_POST['submit']))
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label>Category</label>               
-                                    <select class="form-control"  name="category" id="inputcategory">
+                                    <label>Category</label>
+                                    <select class="form-control" name="category" id="inputcategory">
                                         <option selected disabled>Select category</option>
                                         <option>Individual</option>
                                         <option>Business</option>
                                     </select>
                                 </div>
 
-                                
+
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                <label for="inputEmail">Email</label>
+                                    <label for="inputEmail">Email</label>
                                     <input type="email" name="email" class="form-control" id="inputEmail"
                                         placeholder="Enter Email">
                                 </div>
@@ -381,59 +393,63 @@ if(isset($_POST['submit']))
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Mobile Number</label>
-                                    <input type="text" minlength="10" maxlength="10" class="form-control" name="number" id="number" placeholder="Mobile Number" required>
+                                    <input type="text" minlength="10" maxlength="10" class="form-control" name="number"
+                                        id="number" placeholder="Mobile Number" required>
                                 </div>
                             </div>
                             <div class="col-6">
-                            <div class="form-group">
-                                <label for="inputEmail">Pan Card Number</label>
+                                <div class="form-group">
+                                    <label for="inputEmail">Pan Card Number</label>
                                     <input type="text" name="pan" class="form-control" id="pan"
                                         placeholder="Enter Pan card Number">
-                                </div>                                
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Pan Card Image</label>
-                                    <input type="file" name="image" class="form-control" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" id="inputimg"
-                                        placeholder="image">
+                                    <input type="file" name="image" class="form-control"
+                                        accept="image/jpg,image/png,image/svg,image/webp,image/jpeg,image/pdf"
+                                        id="inputimg" placeholder="image">
                                 </div>
                             </div>
                             <div class="col-6">
-                            <div class="form-group">
-                                <label for="inputEmail">Adhar Card Number</label>
+                                <div class="form-group">
+                                    <label for="inputEmail">Adhar Card Number</label>
                                     <input type="text" name="aadhar" class="form-control" id="pan"
                                         placeholder="Enter Adhar card Number">
-                                </div>                                
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Adhar Card Image</label>
-                                    <input type="file" name="image1" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
-                                        placeholder="image">
+                                    <input type="file" name="image1"
+                                        accept="image/jpg,image/png,image/svg,image/webp,image/jpeg,image/pdf"
+                                        class="form-control" id="inputimg" placeholder="image">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="inputPass">Profile Image</label>
-                                    <input type="file" name="p_image" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg" class="form-control" id="inputimg"
-                                        placeholder="image">
+                                    <input type="file" name="p_image"
+                                        accept="image/jpg,image/png,image/svg,image/webp,image/jpeg,image/pdf"
+                                        class="form-control" id="inputimg" placeholder="image">
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" class="btn btn-primary">Create</button>
-                </div>
-               
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                        </div>
+
                     </form>
-                   
+
                 </div>
-               
+
             </div>
         </div>
     </div>
-    
+
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -465,7 +481,7 @@ if(isset($_POST['submit']))
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
     <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- AdminLTE for demo purposes -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -509,31 +525,33 @@ if(isset($_POST['submit']))
             })
         })
     </script>
-    
+
     <script>
-          $(document).ready(function(){
-          $('.usereditid').click(function(){
-            let dnk = $(this).data('id');
+        $(document).ready(function () {
+            $('.usereditid').click(function () {
+                let dnk = $(this).data('id');
 
-            $.ajax({
-            url: 'action-customer.php',
-            type: 'post',
-            data: {dnk: dnk},
-            success: function(response1){ 
-              $('.body1').html(response1);
-              $('#dnkModal').modal('show'); 
-            }
-          });
-          });
-          });
-          </script>
+                $.ajax({
+                    url: 'action-customer.php',
+                    type: 'post',
+                    data: {
+                        dnk: dnk
+                    },
+                    success: function (response1) {
+                        $('.body1').html(response1);
+                        $('#dnkModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
 
-<script>
-            $(document).ready(function(){
-                $('.delbtn').click(function(e){
-                    e.preventDefault();
-                    let del_id = $(this).data('id');
-                    swal({
+    <script>
+        $(document).ready(function () {
+            $('.delbtn').click(function (e) {
+                e.preventDefault();
+                let del_id = $(this).data('id');
+                swal({
                         title: "Are you sure?",
                         text: "Once deleted, you will not be able to recover this imaginary file!",
                         icon: "warning",
@@ -545,27 +563,27 @@ if(isset($_POST['submit']))
                             swal("Poof! Your imaginary file has been deleted!", {
                                 icon: "success",
                             });
-                            window.location.href = "action-customer.php?del_id"+del_id;
+                            window.location.href = "action-customer.php?del_id" + del_id;
                         } else {
                             swal("Your imaginary file is safe!");
                         }
                     });
-                    })
-                });
-                </script>
-                <script type="text/javascript">
-    $(function () {
-        $("#submi").click(function () {
-            var password = $("#resetPass").val();
-            var confirmPassword = $("#confirmResetPass").val();
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }
-            return true;
+            })
         });
-    });
-</script>
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#submi").click(function () {
+                var password = $("#resetPass").val();
+                var confirmPassword = $("#confirmResetPass").val();
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
 
 </body>
 

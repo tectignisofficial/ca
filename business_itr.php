@@ -3,12 +3,15 @@ include("include/config.php");
 $customer_id=$_GET['customerId'];
 if(isset($_POST['submit']))
 {
-  
+
   $year = $_POST['year'];
   $total_income = $_POST['total_income'];
   $tds_refund = $_POST['tds_refund'];
   $tax_paid = $_POST['tax_paid'];
     $itr_upload=$_FILES['itr_upload']['name'];
+    $totAmt=$_POST['totAmt'];
+    $advanceAmt=$_POST['advanceAmt'];
+    $bal=$_POST['bal'];
     $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
 
     $itr_upload=md5($itr_upload).$extension;
@@ -16,7 +19,7 @@ if(isset($_POST['submit']))
     $loc="dist/img/credit/".$itr_upload;
     move_uploaded_file($dnk,$loc);
         
-    $sql="INSERT INTO `ITR_business`(`year`, `total_income`, `tds_refund`, `tax_paid`, `itr_upload`) VALUES ('$year','$total_income','$tds_refund','$tax_paid','$itr_upload')";
+    $sql="INSERT INTO `ITR_business`(`year`, `total_income`, `tds_refund`, `tax_paid`, `itr_upload`,`cus_no`,`totAmt`,`advAmt`,`balance`) VALUES ('$year','$total_income','$tds_refund','$tax_paid','$itr_upload','$customer_id','$totAmt','$advanceAmt','$bal')";
     if (mysqli_query($conn, $sql)){
       echo "<script> alert ('New record has been added successfully !');</script>";
    }
@@ -149,7 +152,7 @@ if(isset($_POST['submit']))
 
                     <div class="col-7 col-sm-12">
 
-                      <table id="example1" class="table table-bordered table-striped">
+                      <table id="example2" class="table table-bordered table-striped">
                         <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
                             data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
                         <thead>
@@ -168,7 +171,7 @@ if(isset($_POST['submit']))
                         <tbody id="leads" class="packresult">
 
                           <?php     
-                          $sql=mysqli_query($conn,"select * from ITR_business");
+                          $sql=mysqli_query($conn,"select * from ITR_business where cus_no='$customer_id'");
                           $count=1;
                           while($arr=mysqli_fetch_array($sql)){
                           ?>
@@ -179,7 +182,7 @@ if(isset($_POST['submit']))
                             <td><?php echo $arr['tds_refund'];?></td>
                             <td><?php echo $arr['tax_paid'];?></td>
                             <td><button type="button" class="btn btn-sm btn-info m-1 customerview"
-                                data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-eye"></i> </button>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye"></i> </button>
                             </td>
                           </tr>
 
@@ -200,31 +203,7 @@ if(isset($_POST['submit']))
 
       </section>
     </div>
-    <div class="modal" id="myModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">PDF File</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-
-            <div class="card-body">
-              <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="200px"
-                style="border:none;"></iframe>
-            </div>
-
-          </div>
-          <!-- Modal footer -->
-
-
-        </div>
-      </div>
-    </div>
+    
 
     <!-- /.content-wrapper -->
     <?php
@@ -232,7 +211,138 @@ if(isset($_POST['submit']))
   ?>
   </div>
   <!-- ./wrapper -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="height:700px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    
+              <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="100%"
+                style="border:none;"></iframe>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
+          <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+                <!-- Date -->
+                <div class="form-group">
+                  <label>Year:</label>
+                  <input type="text" class="form-control" name="year">
+                  <div class="text" id="reservationdate" data-target-input="nearest" >
+                 
+                  </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <!-- Date and time -->
+                <div class="form-group">
+                        <label>Total Income</label>
+                        <input type="text" class="form-control" name="total_income">
+                </div>
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>TDS Refund</label>
+                        <input type="text" class="form-control" name="tds_refund">
+                  </div>
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Tax Paid</label>
+                        <input type="text" class="form-control" name="tax_paid">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                      <label>ITR upload</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" name="itr_upload" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg,image/pdf">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+
+            </div>
+                  
+                <!-- /.form group -->
+          </div>
+          <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Payment</h1><br>
+            </div>
+            <div class="row">
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Total Payment Amt</label>
+                        <input type="text" class="form-control" name="totAmt" id="totAmt">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Advance Payment Amt</label>
+                        <input type="text" class="form-control" name="advanceAmt" id="advanceAmt">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Balance</label>
+                        <input type="text" class="form-control" name="bal" id="bal">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+                    </div>
+            
+          </div>
+        </div><!-- /.container-fluid -->
+    </section>
+          <button type="submit" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
+                          </form>
+        </div>
+
+      <!-- Modal footer -->
+     
+
+    </div>
+  </div>
+</div>
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -280,13 +390,32 @@ if(isset($_POST['submit']))
         let view = $(this).data('id');
 
         $.ajax({
-          url: 'itr.php',
+          url: 'itr_reports.php',
           type: 'post',
           data: {
             view: view
           },
           success: function (response1) {
             $('.body1').html(response1);
+            $('#viewModal').modal('show');
+          }
+        });
+      });
+    });
+  </script>
+   <script>
+    $(document).ready(function () {
+      $('.customerview2').click(function () {
+        let view = $(this).data('id');
+
+        $.ajax({
+          url: 'business_itr.php',
+          type: 'post',
+          data: {
+            view: view
+          },
+          success: function (response1) {
+            $('.body2').html(response2);
             $('#myModal').modal('show');
           }
         });
