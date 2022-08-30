@@ -80,12 +80,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="business-itr-reports.php" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Business &nbsp; ITR</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="gst-reports.php" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>GST</p>

@@ -88,10 +88,10 @@ include("include/config.php");
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-    <!-- Preloader -->
+    <!-- Preloader
     <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <?php  
@@ -146,7 +146,7 @@ include("include/config.php");
                         <div class="col-6">
                           <select class="form-control" onChange="package(this.value)" name="category"
                             id="inputcategory">
-                            <option selected disabled>Select Customer Name</option>
+                            <option selected disabled>Select</option>
                             <?php
                             while($sql=mysqli_fetch_array($query))
                             {
@@ -161,7 +161,7 @@ include("include/config.php");
                             while($sql=mysqli_fetch_array($query1))
                             {
                               ?>
-                            <option value="<?php echo $sql['company_name']; ?>" class="company">
+                            <option value="<?php echo $sql['cus_no']; ?>" class="company">
                               <?php echo $sql['company_name']; ?>
                             </option>
                             <?php } ?>
@@ -244,6 +244,8 @@ include("include/config.php");
                   </table>
                 </div>
               </div>
+
+               <!-- **Company** -->
               <?php 
  }
  else if($fav_language=='company'){
@@ -262,11 +264,9 @@ include("include/config.php");
                         <th>phone_no</th>
                         <th>email</th>
                         <th>ITR</th>
-                        <th>email</th>
                         <th>years</th>
                         <th>Total Income</th>
                         <th>TDS Refund</th>
-                        <th>Tax Refund</th>
                         <th>Tax Paid</th>
                         <th>Upload</th>
 
@@ -275,12 +275,9 @@ include("include/config.php");
                     <tbody>
 
                       <?php   
-                      if($category=='allcompany'){
-                        $sql=mysqli_query($conn,"select * from company");
-                      }  
-                      else{
-                    $sql=mysqli_query($conn,"select * from company where company_name='$category'");
-                      }
+                      
+                        $sql=mysqli_query($conn,"select * from ITR_business inner join company on ITR_business.cus_no=company.cus_no WHERE ITR_business.cus_no='$category'");
+                 
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
@@ -335,7 +332,7 @@ include("include/config.php");
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content" style="height:700px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Customer ITR</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
