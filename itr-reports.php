@@ -157,12 +157,12 @@ include("include/config.php");
                             <option value="allcustomer" class="customer1">All</option>
 
                             <?php
-                                $query1=mysqli_query($conn,"select * from company");
+                                $query1=mysqli_query($conn,"select * from business_registration");
                             while($sql=mysqli_fetch_array($query1))
                             {
                               ?>
                             <option value="<?php echo $sql['cus_no']; ?>" class="company">
-                              <?php echo $sql['company_name']; ?>
+                              <?php echo $sql['name']; ?>
                             </option>
                             <?php } ?>
                             <option value="allcompany" class="company">All</option>
@@ -262,7 +262,6 @@ include("include/config.php");
                         <th>Sr No.</th>
                         <th>company_name</th>
                         <th>phone_no</th>
-                        <th>email</th>
                         <th>ITR</th>
                         <th>years</th>
                         <th>Total Income</th>
@@ -276,16 +275,15 @@ include("include/config.php");
 
                       <?php   
                       
-                        $sql=mysqli_query($conn,"select * from ITR_business inner join company on ITR_business.cus_no=company.cus_no WHERE ITR_business.cus_no='$category'");
+                        $sql=mysqli_query($conn,"select * from ITR_business inner join business_registration on ITR_business.cus_no=business_registration.cus_no WHERE ITR_business.cus_no='$category'");
                  
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                       <tr>
                         <td><?php echo $count;?></td>
-                        <td><?php echo $arr['company_name'];?></td>
-                        <td><?php echo $arr['phone_no'];?></td>
-                        <td><?php echo $arr['email'];?></td>
+                        <td><?php echo $arr['name'];?></td>
+                        <td><?php echo $arr['number'];?></td>
                         <td>yes</td>
                         <td><?php echo $arr['year'];?></td>
                         <td><?php echo $arr['total_income'];?></td>
