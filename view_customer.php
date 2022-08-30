@@ -152,10 +152,10 @@ if(isset($_POST['submit']))
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row justify-content-end mt-0"style="
-    margin-bottom: 20px;
-">
+                    margin-bottom: 20px;
+                ">
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                  data-target="#businessITR" style="margin-right: 5px;">+ Add ITR</button>
+                  data-target="#businessITR" style="margin-right: 5px;">+ Add Business ITR</button>
               </div>
               <div class="row">
               <?php     
@@ -163,6 +163,7 @@ if(isset($_POST['submit']))
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
+                <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                   <div class="card card-widget widget-user">
                     <div class="widget-user-header" >
 
@@ -178,6 +179,7 @@ if(isset($_POST['submit']))
                       </div>
                     </div> 
                   </div>
+                  </a>
                 </div>
                 <?php }  ?>
               </div>
@@ -250,13 +252,18 @@ if(isset($_POST['submit']))
           <div class="modal-body">
           <form method="post" enctype="multipart/form-data">
             <div class="row">
-              <div class="col-sm-12">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Category</label>
-                  <input type="text" class="form-control" name="category" placeholder="Enter ...">
-                </div>
-              </div>
+            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-control" name="category" id="inputcategory">
+                                        <option selected disabled>Select category</option>
+                                        <option>Individual</option>
+                                        <option>Business</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
