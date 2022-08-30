@@ -305,17 +305,63 @@ if(isset($_POST['submit']))
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>5% GST</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="CGST 2.5%">
+                    </div>
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="SGST 2.5%">
+                  </div>
+                </div>
                 </div>
               </div>
+              
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Text</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <label>12% GST</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="CGST 6%">
+                    </div>
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="SGST 6%">
+                  </div>
+                </div>
                 </div>
               </div>
+
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>28% GST</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="CGST 14%">
+                    </div>
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="SGST 14%">
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>18% GST</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="CGST 9%">
+                    </div>
+                  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="SGST 9%">
+                  </div>
+                </div>
+                </div>
+              </div>
+
               <div class="col-sm-12">
                 <div class="row justify-content-center">
                   <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeGST()">Remove Gst</button>

@@ -36,7 +36,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <style>
-    table , td, th {
+  table , td, th {
 	border: 1px solid #595959;
 	border-collapse: collapse;
 }
@@ -127,47 +127,53 @@ th {
                         <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
                             data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
                        
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Party Name</th>
+                                    <th>Bill No</th>
+                                    <th>GST No</th>
+                                    <th>Gross Total</th>
+                                    <th>Manpower Service</th>
+                                    <th>CGST @6%</th>
+                                    <th>SGST @6%</th>
+                                    <th>CGST @9%</th>
+                                    <th>SGST @9%</th>
+                                    <th>Round Off</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody id="leads" class="packresult">
 
 
-                        <tbody id="leads" class="packresult">
-
-                            <tr>
-                              <td colspan="6" style="text-align:center"><b>GST Input Output Tax Report</b></td>
-                            </tr>
-                            <tr>
-                              <th>Month:</th>
-                              <td>......</td>
-                              <th>GSTIN:</th>
-                              <td>.......</td>
-                              <th>Year:</th>
-                              <td>....</td>
-                            </tr>
-                            
-                            <tr>
-                              <td colspan="6" style="text-align:center;"><b>SUMMARY </b></td>
-                            </tr>
-                            
-                          <tr>
-                            <th>Description</th>
-                            <th>Taxable Value</th>
-                            <th>SGST</th>
-                            <th>CGST</th>
-                            <th>IGST</th>
-
-                            <th>GST Total</th>
-                          </tr>
-                        
-                        <tbody id="leads" class="packresult">
-                            <tr>
-                              <td>...</td>
-                              <td>..</td>
-                              <td>..</td>
-                              <td>...</td>
-                              <td>...</td>
-                              <td>...</td>
-                            </tr>
-                        </tbody>
-                        </tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td>Total Amount</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    
+                                    
+                                </tr>
+                            </tbody>
                       </table>
                       
 	
