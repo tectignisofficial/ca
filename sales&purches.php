@@ -1,36 +1,3 @@
-<?php
-include("include/config.php");
-$customer_id=$_GET['customerId'];
-
-if(isset($_POST['submit']))
-{
-  $year = $_POST['year'];
-  $total_income = $_POST['total_income'];
-  $tds_refund = $_POST['tds_refund'];
-  $tax_paid = $_POST['tax_paid'];
-  $itr_upload=$_FILES['itr_upload']['name'];
-  $totAmt=$_POST['totAmt'];
-  $advanceAmt=$_POST['advanceAmt'];
-  $bal=$_POST['bal'];
-  $extension=substr($itr_upload,strlen($itr_upload)-4,strlen($itr_upload));   
-
-  $itr_upload=md5($itr_upload).$extension;
-  $dnk=$_FILES['itr_upload']['tmp_name'];
-  $loc="dist/img/credit/".$itr_upload;
-  move_uploaded_file($dnk,$loc);
-        
-    $sql="INSERT INTO `ITR`(`year`, `total_income`, `tds_refund`, `tax_paid`, `itr_upload`,`cus_no`,`totAmt`,`advAmt`,`balance`) VALUES ('$year','$total_income','$tds_refund','$tax_paid','$itr_upload','$customer_id','$totAmt','$advanceAmt','$bal')";
-    if (mysqli_query($conn, $sql)){
-      echo "<script> alert ('New record has been added successfully !');</script>";
-   }
-    else {
-      echo "<script> alert ('connection failed !');</script>";
-   }
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +35,26 @@ if(isset($_POST['submit']))
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+  table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 3px;
+	width: 30px;
+	height: 25px;
+}
+th {
+	background: #f0e6cc;
+}
+.even {
+	background: #fbf8f0;
+}
+.odd {
+	background: #fefcf9;
+}
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -84,74 +71,45 @@ if(isset($_POST['submit']))
   ?>
 
     <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Advanced Form</h1>
-            </div>
-          
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Advanced Form</li>
-              </ol>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-    </section>
+    <div class="content-wrapper">
       <section class="content-header">
         <div class="container-fluid">
 
           <div class="row">
             <div class="col-12">
               <div class="card">
-              <?php     
-                    $sql=mysqli_query($conn,"select * from customer_registration where cus_no='$customer_id'");
-                    while($arr=mysqli_fetch_array($sql)){
-                    ?>
                 <div class="card-header">
                   <div class="row">
                     <div class="col-6">
-                      
-                      <label>Customer Name:</label>
-                      <label><?php echo $arr['name'];?></label>
+                      <h5>Customer Details: All Details</h5>
                     </div>
-                    
                     <div class="col-6">
-                    <label>Customer Category:</label>
-                      <label><?php echo $arr['category'];?></label>
-                    
+                      <h5>Customer Details: All Details</h5>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
-                      <label>Customer Email:</label>
-                      <label><?php echo $arr['email'];?></label>
-                    
+                      <h5>Customer Details: All Details</h5>
                     </div>
                     <div class="col-6">
-                   
-                    <label>Customer  Pancard No:</label>
-                      <label><?php echo $arr['pan'];?></label>
+                      <h5>Customer Details: All Details</h5>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-6">
-                    
-                    <label>Customer  Aadhar No:</label>
-                      <label><?php echo $arr['aadhar'];?></label>
+                      <h5>Customer Details: All Details</h5>
                     </div>
-                   
+                    <div class="col-6">
+                      <h5>Customer Details: All Details</h5>
+                    </div>
                   </div>
                 </div>
-                <?php }  ?>
+
               </div>
             </div>
-            </div>
+
           </div>
-      
+        </div>
 
       </section>
       <section class="content-header">
@@ -166,41 +124,59 @@ if(isset($_POST['submit']))
                     <div class="col-7 col-sm-12">
 
                       <table id="example1" class="table table-bordered table-striped">
-                        <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal" data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
-                        <thead>
-                          <tr>
-                            <th>Sr No.</th>
-                            <th>Year</th>
-                            <th>Total Income</th>
-                            <th>TDS Refund</th>
-                            <th>Tax Paid</th>
+                        <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
+                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
+                       
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Party Name</th>
+                                    <th>Bill No</th>
+                                    <th>GST No</th>
+                                    <th>Gross Total</th>
+                                    <th>Manpower Service</th>
+                                    <th>CGST @6%</th>
+                                    <th>SGST @6%</th>
+                                    <th>CGST @9%</th>
+                                    <th>SGST @9%</th>
+                                    <th>Round Off</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody id="leads" class="packresult">
 
-                            <th>ITR_File</th>
-                          </tr>
-                        </thead>
 
-
-                        <tbody id="leads" class="packresult">
-
-                        <?php     
-                    $sql=mysqli_query($conn,"select * from ITR where cus_no='$customer_id'");
-                    $count=1;
-                    while($arr=mysqli_fetch_array($sql)){
-                    ?>
-                  <tr >
-                    <td><?php echo $count;?></td>
-                    <td><?php echo $arr['year'];?></td>
-                    <td><?php echo $arr['total_income'];?></td>
-                    <td><?php echo $arr['tds_refund'];?></td>
-                    <td><?php echo $arr['tax_paid'];?></td>
-                    <td><button type="button" class="btn btn-sm btn-info m-1 customerview"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye"></i> </button>
-                            </td>                  
-                  </tr>                 
-                  <?php $count++; }  ?>
-
-                        </tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td>Total Amount</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    
+                                    
+                                </tr>
+                            </tbody>
                       </table>
+                      
+	
                     </div>
 
                   </div>
@@ -213,150 +189,88 @@ if(isset($_POST['submit']))
         </div>
 
       </section>
-   
-     
-  </div>              
-                    
-<?php
-  include("include/footer.php");
-  ?>
-  </div>
-    <!-- /.content-wrapper -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content" style="height:700px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-    
-              <iframe src="dist\img\credit\b502ff7c4e812fd53a0efa56f3ad238b.pdf" width="100%" height="100%"
-                style="border:none;"></iframe>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Download</button>
-      </div>
     </div>
-  </div>
-</div>
-  <!-- ./wrapper -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
-  <div class="modal" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-        <div class="modal-body">
-          <form method="post" enctype="multipart/form-data">
-          <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-                <!-- Date -->
-                <div class="form-group">
-                <div class="row">
-                        <div>
-                          <label class="col">Years</label>
-                        </div>
-                        <div class="col-12">
-                          <select id="financialYear" name="year" class="form-control"></select>
-                        </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <!-- Date -->
+                  <div class="form-group">
+                    <label>Year:</label>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <!-- Date and time -->
-                <div class="form-group">
-                        <label>Total Income</label>
-                        <input type="text" class="form-control" name="total_income">
-                </div>
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>TDS Refund</label>
-                        <input type="text" class="form-control" name="tds_refund">
+                    </div>
                   </div>
-            </div>
-            <div class="col-6">
+                </div>
+                <div class="col-6">
+                  <!-- Date and time -->
                   <div class="form-group">
-                        <label>Tax Paid</label>
-                        <input type="text" class="form-control" name="tax_paid">
+                    <label>Total Income</label>
+                    <input type="text" class="form-control" name="income">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>TDS Return</label>
+                    <input type="text" class="form-control" name="tds">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Tax Paid</label>
+                    <input type="text" class="form-control" name="tax">
                   </div>
                   <!-- /.input group -->
-            </div>
-            <div class="col-6">
+                </div>
+                <div class="col-6">
                   <div class="form-group">
-                      <label>ITR upload</label>
+                    <label>ITR upload</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="itr_upload" accept="image/jpg,image/png,image/svg,image/webp,image/jpeg,image/pdf">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" name="file" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <!-- /.form group -->
             </div>
-            
-           
-            </div>
-                  
-                <!-- /.form group -->
+            <button type="button" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
           </div>
-          <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Payment</h1><br>
-            </div>
-            <div class="row">
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Total Payment Amt</label>
-                        <input type="text" class="form-control" name="totAmt" id="totAmt">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Advance Payment Amt</label>
-                        <input type="text" class="form-control" name="advanceAmt" id="advanceAmt">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Balance</label>
-                        <input type="text" class="form-control" name="bal" id="bal">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-                    </div>
-            
-          </div>
-        </div><!-- /.container-fluid -->
-    </section>
-          <button type="submit" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
-                          </form>
+
+          <!-- Modal footer -->
+
+
         </div>
-
-      <!-- Modal footer -->
-     
-
+      </div>
     </div>
+
+    <!-- /.content-wrapper -->
+    <?php
+  include("include/footer.php");
+  ?>
   </div>
-</div>
+  <!-- ./wrapper -->
+
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -406,47 +320,17 @@ if(isset($_POST['submit']))
         "autoWidth": false,
         //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-  </script>
-  <script>
-    var yearsLength = 30;
-    var currentYear = new Date().getFullYear();
-    for (var i = 0; i < 30; i++) {
-      var next = currentYear + 1;
-      var year = currentYear + '-' + next.toString().slice(-2);
-      $('#financialYear').append(new Option(year, year));
-      currentYear--;
-    }
-  </script>
-  <script>
-    $(document).ready(function () {
-      $('.customerview').click(function () {
-        let view = $(this).data('id');
-
-        $.ajax({
-          url: 'itr_reports.php',
-          type: 'post',
-          data: {
-            view: view
-          },
-          success: function (response1) {
-            $('.body1').html(response1);
-            $('#viewModal').modal('show');
-          }
-        });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
       });
     });
   </script>
-  <script>
-    $(document).ready(function(){
-      $("#tamt,#advanceAmt").keyup(function(){
-     let tamt=$("#tamt").val();
-     let advanceAmt=$("#advanceAmt").val();
-     $("#bal").val(tamt-advanceAmt);
-    });
-  });
-</script>
-  
   <script>
     $(function () {
       //Initialize Select2 Elements
@@ -594,4 +478,3 @@ if(isset($_POST['submit']))
 </body>
 
 </html>
-

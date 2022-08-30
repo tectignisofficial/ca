@@ -35,6 +35,26 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+    table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 3px;
+	width: 30px;
+	height: 25px;
+}
+th {
+	background: #f0e6cc;
+}
+.even {
+	background: #fbf8f0;
+}
+.odd {
+	background: #fefcf9;
+}
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -106,39 +126,51 @@
                       <table id="example1" class="table table-bordered table-striped">
                         <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
                             data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
-                        <thead>
-                          <tr>
-                            <th>Sr No.</th>
-                            <th>Year</th>
-                            <th>Total Income</th>
-                            <th>TDS Refund</th>
-                            <th>Tax Paid</th>
-
-                            <th>Action</th>
-                          </tr>
-                        </thead>
+                       
 
 
                         <tbody id="leads" class="packresult">
 
+                            <tr>
+                              <td colspan="6" style="text-align:center"><b>GST Input Output Tax Report</b></td>
+                            </tr>
+                            <tr>
+                              <th>Month:</th>
+                              <td>......</td>
+                              <th>GSTIN:</th>
+                              <td>.......</td>
+                              <th>Year:</th>
+                              <td>....</td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="6" style="text-align:center;"><b>SUMMARY </b></td>
+                            </tr>
+                            
                           <tr>
-                            <td>1</td>
-                            <td>2022</td>
-                            <td>details</td>
-                            <td>details</td>
-                            <td>details</td>
+                            <th>Description</th>
+                            <th>Taxable Value</th>
+                            <th>SGST</th>
+                            <th>CGST</th>
+                            <th>IGST</th>
 
-                            <td><a href="#"><button type="button" class="btn btn-primary btn-md"
-                                  style="color: aliceblue"> <i class="fas fa-eye"></i></button></a>
-
-                              <a href="form1.php?delsr_no=<?php echo $arr['id']; ?>"><button type="button"
-                                  class="btn btn-danger btn-md" style="color: aliceblue"> <i
-                                    class="fas fa-trash"></i></button></a></td>
-
+                            <th>GST Total</th>
                           </tr>
-
+                        
+                        <tbody id="leads" class="packresult">
+                            <tr>
+                              <td>...</td>
+                              <td>..</td>
+                              <td>..</td>
+                              <td>...</td>
+                              <td>...</td>
+                              <td>...</td>
+                            </tr>
+                        </tbody>
                         </tbody>
                       </table>
+                      
+	
                     </div>
 
                   </div>

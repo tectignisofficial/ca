@@ -228,7 +228,7 @@ if(isset($_POST['submit']))
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Download</button>
       </div>
     </div>
   </div>
@@ -253,11 +253,15 @@ if(isset($_POST['submit']))
             <div class="col-6">
                 <!-- Date -->
                 <div class="form-group">
-                  <label>Year:</label>
-                  <input type="text" class="form-control" name="year">
-                  <div class="text" id="reservationdate" data-target-input="nearest" >
-                 
-                  </div>
+                <div class="row">
+                        <div>
+                          <label class="col">Years</label>
+                        </div>
+                        <div class="col-12">
+                          <select id="financialYear" name="year" class="form-control"></select>
+                        </div>
+                      </div>
+                </div>
                 </div>
             </div>
             <div class="col-6">
@@ -384,6 +388,16 @@ if(isset($_POST['submit']))
   <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <!-- Page specific script -->
+  <script>
+    var yearsLength = 30;
+    var currentYear = new Date().getFullYear();
+    for (var i = 0; i < 30; i++) {
+      var next = currentYear + 1;
+      var year = currentYear + '-' + next.toString().slice(-2);
+      $('#financialYear').append(new Option(year, year));
+      currentYear--;
+    }
+  </script>
   <script>
     $(document).ready(function () {
       $('.customerview').click(function () {
