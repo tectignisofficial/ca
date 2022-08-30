@@ -230,9 +230,9 @@ include("include/config.php");
                       <tr>
                         <td><?php echo $count;?></td>
                         <td><?php echo $arr['name'];?></td>
-                        <td><?php echo $arr['number'];?></td>=
+                        <td><?php echo $arr['number'];?></td>
                         <td>yes</td>
-                        <td><?php echo $arr['years'];?></td>
+                        <td><?php echo $arr['year'];?></td>
                         <td><?php echo $arr['total_income'];?></td>
                         <td><?php echo $arr['tds_refund'];?></td>
                         <td><?php echo $arr['tax_paid'];?></td>
@@ -261,6 +261,14 @@ include("include/config.php");
                         <th>company_name</th>
                         <th>phone_no</th>
                         <th>email</th>
+                        <th>ITR</th>
+                        <th>email</th>
+                        <th>years</th>
+                        <th>Total Income</th>
+                        <th>TDS Refund</th>
+                        <th>Tax Refund</th>
+                        <th>Tax Paid</th>
+                        <th>Upload</th>
 
                       </tr>
                     </thead>
@@ -281,7 +289,14 @@ include("include/config.php");
                         <td><?php echo $arr['company_name'];?></td>
                         <td><?php echo $arr['phone_no'];?></td>
                         <td><?php echo $arr['email'];?></td>
-
+                        <td>yes</td>
+                        <td><?php echo $arr['year'];?></td>
+                        <td><?php echo $arr['total_income'];?></td>
+                        <td><?php echo $arr['tds_refund'];?></td>
+                        <td><?php echo $arr['tax_paid'];?></td>
+                        <td><button type="button" class="btn-sm-btn-info m-1 customerview" data-toggle="modal"
+                            data-target="#exampleModal"><i class="fa fa-eye"></i></button></td>
+                      </tr>
                       </tr>
                       <?php $count++; }  ?>
                     </tbody>
