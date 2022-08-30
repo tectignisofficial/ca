@@ -154,7 +154,7 @@ if(isset($_POST['submit']))
 
                       <table id="example2" class="table table-bordered table-striped">
                         <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
-                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
+                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add Business ITR</button></h3>
                         <thead>
                           <tr>
                             <th>Sr No.</th>
