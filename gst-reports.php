@@ -125,18 +125,27 @@ include("include/config.php");
           <div class="packageresult">
 
             <div class="card">
-                <div class="col-12 my-3">
+                <div class="col-12 my-3" style="padding-top:25px;">
                   <div class="row text-center justify-content-center">
                     <label class="col-2">Select GST User</label>
                     <select class="form-control col-4" name="category" id="inputcategory">
-                      <option selected disabled>Select GST User</option>
-                      <option>Individual</option>
-                      <option>Business</option>
-                    </select>
+                      <option selected disabled>Select</option>
+                      <?php
+                                $query1=mysqli_query($conn,"select * from business_registration");
+                            while($sql=mysqli_fetch_array($query1))
+                            {
+                              ?>
+                            <option value="<?php echo $sql['cus_no']; ?>" class="company">
+                              <?php echo $sql['name']; ?>
+                            </option>
+                            <?php } ?>
+                            <option value="allcompany" class="company">All</option>
+                          </select>
+                          <div class="col-6" style="padding-left:5%;">
+                  <button class="btn btn-primary" style="float:left;" type="submit" name="submit" id="submit" value="login">Submit</button>
                   </div>
-                  <div style="text-align:center; margin-top:inherit;">
-                  <button class="btn btn-primary" style="float:middle;" type="submit" name="submit" id="submit" value="login">Submit</button>
                   </div>
+                  
                 </div>
             </div>
 
@@ -152,14 +161,31 @@ include("include/config.php");
                       <thead>
                         <tr>
                           <th>Sr No.</th>
-                          <th>Package</th>
-                          <th>Client Name</th>
-                          <th>Client Mobile No.</th>
-                          <th>Requirment</th>
-                          <th>Created On</th>
-                          <th>Action</th>
+                          <th>Year</th>
+                          <th>Month</th>
+                          <th>purches Amount</th>
+                          <th>Sale Amount</th>
+                          <th>TAx Paid</th>
                         </tr>
                       </thead>
+                       <tbody>
+
+                       <?php     
+                          $sql=mysqli_query($conn,"select * from GST where cus_no='$customer_id'");
+                          $count=1;
+                          while($arr=mysqli_fetch_array($sql)){
+                          ?>
+                      <tr>
+                        <td><?php echo $count;?></td>
+                        <td><?php echo $arr['year'];?></td>
+                        <td><?php echo $arr['month'];?></td>
+                        <td><?php echo $arr['purches_amount'];?></td>
+                        <td><?php echo $arr['sale_amount'];?></td>
+                        <td><?php echo $arr['tax_paid'];?></td>
+                      </tr>
+                      </tr>
+                      <?php $count++; }  ?>
+                    </tbody>
 
                     </table>
                   </div>
