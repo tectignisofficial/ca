@@ -223,7 +223,7 @@ include("include/config.php");
                         $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.cus_no=customer_registration.cus_no");
                       } 
                       else{
-                    $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.cus_no=customer_registration.cus_no WHERE ITR.cus_no='$category'");}
+                    $sql=mysqli_query($conn,"select * from ITR inner join customer_registration on ITR.cus_no=customer_registration.cus_no WHERE ITR.cus_no='$category' AND year='$years'");}
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
@@ -275,7 +275,7 @@ include("include/config.php");
 
                       <?php   
                       
-                        $sql=mysqli_query($conn,"select * from ITR_business inner join business_registration on ITR_business.cus_no=business_registration.cus_no WHERE ITR_business.cus_no='$category'");
+                        $sql=mysqli_query($conn,"select * from ITR_business inner join business_registration on ITR_business.cus_no=business_registration.cus_no WHERE ITR_business.cus_no='$category' AND year='$years'");
                  
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
@@ -343,7 +343,7 @@ include("include/config.php");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" date-add="modal">Download</button>
       </div>
     </div>
   </div>
