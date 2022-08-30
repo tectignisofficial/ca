@@ -308,66 +308,65 @@ if(isset($_POST['submit']))
             <div class="row justify-content-center" id="btnGST">
               <button type="button" name="" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
             </div>
+            
             <div class="row" id="GST" style="display:none;">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+              <h3>Add-GST </h3>
+            </div>
+            </div>
+                <!-- text input -->
               <div class="col-sm-6">
                 <!-- text input -->
-                <div class="form-group">
-                  <label>5% GST</label>
-                <div class="row">
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="CGST 2.5%">
-                    </div>
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="SGST 2.5%">
-                  </div>
-                </div>
-                </div>
+                
+              
               </div>
               
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>12% GST</label>
-                <div class="row">
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="CGST 6%">
-                    </div>
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="SGST 6%">
-                  </div>
+                  <label>GST No</label>
+                  <input type="text" class="form-control" placeholder="">
                 </div>
-                </div>
+              
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                                    <label>GST Percentage</label>
+                                    <select class="form-control" name="category" id="inputcategory">
+                                        <option selected disabled>5%</option>
+                                        <option>12%</option>
+                                        <option>28%</option>
+                                        <option>18%</option>
+                                    </select>
+                                </div>
               </div>
 
               <div class="col-sm-6">
                 <!-- text input -->
-                <div class="form-group">
-                  <label>28% GST</label>
-                <div class="row">
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="CGST 14%">
-                    </div>
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="SGST 14%">
-                  </div>
-                </div>
-                </div>
+                                <div class="form-group">
+                                    <label>GST Type</label>
+                                    <select class="form-control" name="category" id="inputcategory">
+                                        <option selected disabled>Monthly</option>
+                                        <option>Quaterly</option>
+                                    </select>
+                                </div>
               </div>
+          
 
               <div class="col-sm-6">
                 <!-- text input -->
                 <div class="form-group">
-                  <label>18% GST</label>
-                <div class="row">
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="CGST 9%">
-                    </div>
-                  <div class="col-sm-6">
-                  <input type="text" class="form-control" placeholder="SGST 9%">
-                  </div>
-                </div>
+                  <label>GST</label>
+                  <select class="form-control" name="category" id="inputcategory">
+                                        <option selected disabled>GSTR-1</option>
+                                        <option>GST3-B</option>
+                                    </select>
                 </div>
               </div>
+
+              
 
               <div class="col-sm-12">
                 <div class="row justify-content-center">
@@ -375,7 +374,7 @@ if(isset($_POST['submit']))
                 </div>
               </div>
             </div>
-          
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
