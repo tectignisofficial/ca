@@ -65,6 +65,16 @@
             
           </li>
           <li class="nav-item">
+            <a href="payment.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Payment
+                
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>

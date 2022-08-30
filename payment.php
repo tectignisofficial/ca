@@ -1,3 +1,21 @@
+<?php
+include("include/config.php");
+
+if(isset($_POST['update']))
+{
+  $total_payment = $_POST['total_payment'];
+  $advance_payment = $_POST['advance_payment'];
+  $balance = $_POST['balance'];
+        
+    $sql="UPDATE `payment` SET `total_payment`='$total_payment',`advance_payment`='$advance_payment',`balance`='$balance'";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been Updated successfully !');</script>";
+   }
+    else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,51 +70,13 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+      
       <section class="content-header">
         <div class="container-fluid">
 
           <div class="row">
             <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <div class="row">
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                    <div class="col-6">
-                      <h5>Customer Details: All Details</h5>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </section>
-      <section class="content-header">
-        <div class="container-fluid">
-
-          <div class="row">
-            <div class="col-12">
+            <h3>Payment</h3>
               <div class="card">
                 <div class="card-header">
                   <div class="row">
@@ -104,41 +84,36 @@
                     <div class="col-7 col-sm-12">
 
                       <table id="example1" class="table table-bordered table-striped">
-                        <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
-                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
+                        
                         <thead>
                           <tr>
                             <th>Sr No.</th>
-                            <th>Year</th>
-                            <th>Total Income</th>
-                            <th>TDS Refund</th>
-                            <th>Tax Paid</th>
-
-                            <th>Action</th>
+                            <th>Total_Payment_Amount</th>
+                            <th>Advance_Payment_Amount</th>
+                            <th>Balance</th>
                           </tr>
                         </thead>
 
 
                         <tbody id="leads" class="packresult">
-
+                        <?php     
+                    $sql=mysqli_query($conn,"select * from payment");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
                           <tr>
-                            <td>1</td>
-                            <td>2022</td>
-                            <td>details</td>
-                            <td>details</td>
-                            <td>details</td>
-
-                            <td><a href="#"><button type="button" class="btn btn-primary btn-md"
-                                  style="color: aliceblue"> <i class="fas fa-eye"></i></button></a>
-
-                              <a href="form1.php?delsr_no=<?php echo $arr['id']; ?>"><button type="button"
-                                  class="btn btn-danger btn-md" style="color: aliceblue"> <i
-                                    class="fas fa-trash"></i></button></a></td>
-
+                          <td><?php echo $count;?></td>
+                    <td><?php echo $arr['total_payment'];?></td>
+                    <td><?php echo $arr['advance_payment'];?></td>
+                    <td><?php echo $arr['balance'];?></td>
+                    
                           </tr>
-
+                          <?php $count++; }  ?>
                         </tbody>
+                        
                       </table>
+                      <button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal" data-bs-toggle="modal"  style="color: aliceblue; float:right;"data-bs-target="#myModal">update</button>
+                      
                     </div>
 
                   </div>
@@ -152,79 +127,7 @@
 
       </section>
     </div>
-    <div class="modal" id="myModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-6">
-                  <!-- Date -->
-                  <div class="form-group">
-                    <label>Year:</label>
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
-                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <!-- Date and time -->
-                  <div class="form-group">
-                    <label>Total Income</label>
-                    <input type="text" class="form-control" name="income">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>TDS Return</label>
-                    <input type="text" class="form-control" name="tds">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>Tax Paid</label>
-                    <input type="text" class="form-control" name="tax">
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>ITR upload</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" name="file" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- /.form group -->
-            </div>
-            <button type="button" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
-          </div>
-
-          <!-- Modal footer -->
-
-
-        </div>
-      </div>
-    </div>
+  
 
     <!-- /.content-wrapper -->
     <?php
@@ -232,7 +135,59 @@
   ?>
   </div>
   <!-- ./wrapper -->
+  <div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
+          <div class="card-body">
+          <div class="row">
+            
+          <div class="col-6">
+                  <div class="form-group">
+                        <label>Total Payment Amt</label>
+                        <input type="text" class="form-control" name="total_payment" >
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Advance Payment Amt</label>
+                        <input type="text" class="form-control" name="advance_payment" id="advanceAmt">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Balance</label>
+                        <input type="text" class="form-control" name="balance" id="bal">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+           
+            </div>
+                  
+                <!-- /.form group -->
+          </div>
+          
+          <button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal">update</button>
+                          </form>
+        </div>
+
+      <!-- Modal footer -->
+     
+
+    </div>
+  </div>
+</div>
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -274,6 +229,25 @@
   <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <!-- Page specific script -->
+  <script>
+    $(document).ready(function () {
+      $('.customerview').click(function () {
+        let view = $(this).data('id');
+
+        $.ajax({
+          url: 'itr_reports.php',
+          type: 'post',
+          data: {
+            view: view
+          },
+          success: function (response1) {
+            $('.body1').html(response1);
+            $('#myModal').modal('show');
+          }
+        });
+      });
+    });
+  </script>
   <script>
     $(function () {
       $("#example1").DataTable({
