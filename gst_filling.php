@@ -149,7 +149,7 @@ th {
 
                       <table id="example1" class="table table-bordered table-striped">
                         <h3>ITR <button type="button" class="btn btn-primary float-right " data-bs-toggle="modal"
-                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add ITR</button></h3>
+                            data-bs-target="#myModal" style="margin-right: 5px;">+ Add GST</button></h3>
                        
 
 
@@ -166,18 +166,22 @@ th {
 
 
                         <tbody id="leads" class="packresult">
-
+                        <?php     
+                          $sql=mysqli_query($conn,"select * from GST where cus_no='$customer_id'");
+                          $count=1;
+                          while($arr=mysqli_fetch_array($sql)){
+                          ?>
                           
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
+                            <td><?php echo $count;?></td>
+                            <td><?php echo $arr['year'];?></td>
+                            <td><?php echo $arr['month'];?></td>
+                            <td><?php echo $arr['purches_amount'];?></td>
+                            <td><?php echo $arr['sale_amount'];?></td>
+                            <td><?php echo $arr['tax_paid'];?>
                             </td>
                           </tr>
-
+                          <?php $count++; }  ?>
 
                         </tbody>
                       </table>

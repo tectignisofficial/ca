@@ -1,7 +1,7 @@
 <?php
 include("include/config.php");
 $customer_id=$_GET['customerId'];
-if(isset($_POST['submit']))
+if(isset($_POST['submi']))
 {
     $customer=$_POST['customer'];
   $category = $_POST['category'];
@@ -10,10 +10,12 @@ if(isset($_POST['submit']))
   $adress = $_POST['adress'];
   $number = $_POST['number'];
   $c_person = $_POST['c_person'];
-    
-        
+  $gst_no = $_POST['gst_no'];
+  $gst_percentage = $_POST['gst_percentage'];
+  $gst_type = $_POST['gst_type'];
+  $gst = $_POST['gst'];
             
-    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`,`cus_no`) VALUES ('$category','$name','$designation','$adress','$number','$c_person','$customer')";
+    $sql="INSERT INTO `business_registration`(`category`, `name`, `designation`, `adress`, `number`, `c_person`,`cus_no`,`gst_no`,`gst_percentage`,`gst_type`,`gst`) VALUES ('$category','$name','$designation','$adress','$number','$c_person','$customer','$gst_no','$gst_percentage','$gst_type','$gst')";
     if (mysqli_query($conn, $sql)){
       echo "<script> alert ('New record has been added successfully !');</script>";
    }
@@ -203,23 +205,30 @@ if(isset($_POST['submit']))
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
-
+              <?php     
+                    $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
+                    while($arr=mysqli_fetch_array($sql)){
+                    ?>
                 <div class="col-md-4 col-sm-6">
+                <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                   <div class="card card-widget widget-user">
-                    <div class="widget-user-header" style="background:#B2BEB5;">
+                    <div class="widget-user-header" >
 
                       <div style="display:inline-block;width: 100%;">
-                        <a href="view_clients" style="color:#000;">
-                          <h3 class="widget-user-desc">Business Name</h3>
+                      
+                      
+                        <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
+                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
                         </a>
-                        <a href="view_clients">
-                          <h5 style="font-size: 15px !important;" class="widget-user-username">Business GST</h5>
+                        <a href="gst_filling">
+                          <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
                         </a>
                       </div>
-
-                    </div>
+                    </div> 
                   </div>
+                  </a>
                 </div>
+                <?php }  ?>
               </div>
             </div>
 
@@ -249,8 +258,9 @@ if(isset($_POST['submit']))
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <form method="post">
           <div class="modal-body">
-          <form method="post" enctype="multipart/form-data">
+          
             <div class="row">
             <div class="col-12">
                                 <div class="form-group">
@@ -326,7 +336,7 @@ if(isset($_POST['submit']))
                 <!-- text input -->
                 <div class="form-group">
                   <label>GST No</label>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" name="gst_no" placeholder="">
                 </div>
               
               </div>
@@ -334,7 +344,7 @@ if(isset($_POST['submit']))
                 <!-- text input -->
                 <div class="form-group">
                                     <label>GST Percentage</label>
-                                    <select class="form-control" name="category" id="inputcategory">
+                                    <select class="form-control" name="gst_percentage" id="inputcategory">
                                         <option selected disabled>5%</option>
                                         <option>12%</option>
                                         <option>28%</option>
@@ -347,7 +357,7 @@ if(isset($_POST['submit']))
                 <!-- text input -->
                                 <div class="form-group">
                                     <label>GST Type</label>
-                                    <select class="form-control" name="category" id="inputcategory">
+                                    <select class="form-control" name="gst_type" id="inputcategory">
                                         <option selected disabled>Monthly</option>
                                         <option>Quaterly</option>
                                     </select>
@@ -359,14 +369,15 @@ if(isset($_POST['submit']))
                 <!-- text input -->
                 <div class="form-group">
                   <label>GST</label>
-                  <select class="form-control" name="category" id="inputcategory">
+                  <select class="form-control" name="gst" id="inputcategory">
                                         <option selected disabled>GSTR-1</option>
                                         <option>GST3-B</option>
                                     </select>
                 </div>
               </div>
 
-              
+              <input type="submit" name="submi" class="btn btn-primary" value="Save changes">
+
 
               <div class="col-sm-12">
                 <div class="row justify-content-center">
@@ -376,12 +387,14 @@ if(isset($_POST['submit']))
             </div>
             </div>
           </div>
+
           <div class="modal-footer">
-            <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
           </div>
-          </form>
+          
         </div>
+        
       </div>
+      </form>
     </div>
 
 
