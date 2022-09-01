@@ -386,7 +386,7 @@ if(isset($_POST['submi']))
               </div>
             </div>
             </div>
-          </div>
+          
 
           <div class="modal-footer">
           </div>
