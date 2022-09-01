@@ -128,7 +128,7 @@ include("include/config.php");
             <div class="packageresult">
               <form style="font-size:20px" method="post">
                 <div class="card pt-3">
-                  <div class="row text-center justify-content-center radiobttn" style="padding-right:30px">
+                  <div class="row text-center justify-content-center radiobttn" style="padding-right:30px;padding-top:20px;">
                     <input type="radio" style="margin-right:8px" id="customer" name="fav_language" value="Customer">
                     <label for="customer">Customer</label>
                     <input type="radio" style="margin-right:8px; margin-left:5%" id="company" name="fav_language"
@@ -136,7 +136,7 @@ include("include/config.php");
                     <label for="company">Company</label>
                   </div>
                   <div class="row px-4">
-                    <div class="col-8 my-3">
+                    <div class="col-8 my-3" style="padding-left:3%;">
                       <div class="row">
 
                         <label class="col-4">Select Customer / Company </label>
@@ -181,7 +181,7 @@ include("include/config.php");
                         </div>
                       </div>
                     </div>
-                    <div class="col-2 my-3">
+                    <div class="col-2 my-3" style="padding-right:5%;">
                       <button class="btn btn-primary" style="float:right" type="submit" name="submit" id="submit"
                         value="submit">Submit</button>
                     </div>
