@@ -126,6 +126,7 @@ include("include/config.php");
 
             <div class="card">
                 <div class="col-12 my-3" style="padding-top:25px;">
+                <form method="POST">
                   <div class="row text-center justify-content-center">
                     <label class="col-2">Select GST User</label>
                     <select class="form-control col-4" name="category" id="inputcategory">
@@ -145,7 +146,7 @@ include("include/config.php");
                   <button class="btn btn-primary" style="float:left;" type="submit" name="submit" id="submit" value="login">Submit</button>
                   </div>
                   </div>
-                  
+                            </form>
                 </div>
             </div>
 
@@ -171,7 +172,9 @@ include("include/config.php");
                        <tbody>
 
                        <?php     
-                          $sql=mysqli_query($conn,"select * from GST where cus_no='$customer_id'");
+                        if(isset($_POST['submit'])){
+                          $category=$_POST['category'];
+                          $sql=mysqli_query($conn,"select * from GST where cus_no='$category'");
                           $count=1;
                           while($arr=mysqli_fetch_array($sql)){
                           ?>
@@ -184,7 +187,7 @@ include("include/config.php");
                         <td><?php echo $arr['tax_paid'];?></td>
                       </tr>
                       </tr>
-                      <?php $count++; }  ?>
+                            <?php $count++; } }  ?>
                     </tbody>
 
                     </table>
