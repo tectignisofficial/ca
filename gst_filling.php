@@ -1,3 +1,25 @@
+<?php
+include("include/config.php");
+$customer_id=$_GET['customerId'];
+if(isset($_POST['submit']))
+{
+
+  $year = $_POST['year'];
+  $month = $_POST['month'];
+  $purches_amount = $_POST['purches_amount'];
+  $sale_amount = $_POST['sale_amount'];
+    $tax_paid=$_POST['tax_paid'];  
+    $sql="INSERT INTO `GST`(`year`, `month`, `purches_amount`, `sale_amount`, `tax_paid`, `cus_no`) VALUES ('$year','$month','$purches_amount','$sale_amount','$tax_paid','$customer_id')";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   }
+    else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +37,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Bootstrap Color Picker -->
@@ -129,47 +153,34 @@ th {
                        
 
 
-                        <tbody id="leads" class="packresult">
-
-                            <tr>
-                              <td colspan="6" style="text-align:center"><b>GST Input Output Tax Report</b></td>
-                            </tr>
-                            <tr>
-                              <th>Month:</th>
-                              <td>......</td>
-                              <th>GSTIN:</th>
-                              <td>.......</td>
-                              <th>Year:</th>
-                              <td>....</td>
-                            </tr>
-                            
-                            <tr>
-                              <td colspan="6" style="text-align:center;"><b>SUMMARY </b></td>
-                            </tr>
-                            
+                            <thead>
                           <tr>
-                            <th>Description</th>
-                            <th>Taxable Value</th>
-                            <th>SGST</th>
-                            <th>CGST</th>
-                            <th>IGST</th>
-
-                            <th>GST Total</th>
+                            <th>Sr No.</th>
+                            <th>Year</th>
+                            <th>Month</th>
+                            <th>Purches Amount</th>
+                            <th>Sale Amount</th>
+                            <th>Tax Paid</th>
                           </tr>
-                        
+                        </thead>
+
+
                         <tbody id="leads" class="packresult">
-                            <tr>
-                              <td>...</td>
-                              <td>..</td>
-                              <td>..</td>
-                              <td>...</td>
-                              <td>...</td>
-                              <td>...</td>
-                            </tr>
-                        </tbody>
+
+                          
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            </td>
+                          </tr>
+
+
                         </tbody>
                       </table>
-                      
 	
                     </div>
 
@@ -196,61 +207,56 @@ th {
 
           <!-- Modal body -->
           <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
             <div class="card-body">
+            
               <div class="row">
                 <div class="col-6">
                   <!-- Date -->
                   <div class="form-group">
                     <label>Year:</label>
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
-                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div>
+                    
+                    <input type="text" class="form-control" name="year" id="datepicker" />
+                      
+                   
                   </div>
                 </div>
                 <div class="col-6">
                   <!-- Date and time -->
                   <div class="form-group">
-                    <label>Total Income</label>
-                    <input type="text" class="form-control" name="income">
+                    <label>Month</label>
+                    <input type="month" class="form-control" name="month">
                   </div>
                 </div>
+                
                 <div class="col-6">
                   <div class="form-group">
-                    <label>TDS Return</label>
-                    <input type="text" class="form-control" name="tds">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>Tax Paid</label>
-                    <input type="text" class="form-control" name="tax">
+                    <label>Purches Amount</label>
+                    <input type="text" class="form-control" name="purches_amount">
                   </div>
                   <!-- /.input group -->
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label>ITR upload</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" name="file" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
+                    <label>Sale Amount</label>
+                    <input type="text" class="form-control" name="sale_amount">
                   </div>
+                  <!-- /.input group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Tax Paid</label>
+                    <input type="text" class="form-control" name="tax_paid">
+                  </div>
+                  <!-- /.input group -->
                 </div>
               </div>
 
               <!-- /.form group -->
             </div>
-            <button type="button" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>
           </div>
-
+          </form>
           <!-- Modal footer -->
 
 
@@ -304,8 +310,23 @@ th {
   <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 
   <!-- Page specific script -->
+  <script>
+$(document).ready(function(){
+  $("#datepicker").datepicker({
+     format: "yyyy",
+     viewMode: "years", 
+     minViewMode: "years",
+     autoclose:true
+  });   
+})
+
+
+</script>
   <script>
     $(function () {
       $("#example1").DataTable({
