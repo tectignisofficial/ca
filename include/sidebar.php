@@ -37,7 +37,60 @@
             </a>
             
           </li>
-
+          <li class="nav-item">
+            <a href="customer.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Customer
+               
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Business
+                
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="payment.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Payment
+                
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Reports
+              <i class="right fas fa-angle-left"></i>                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="itr-reports.php" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>ITR</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="gst-reports.php" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>GST</p>
+                </a>
+              </li>
+            </ul>
+            
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
