@@ -89,13 +89,13 @@ if(isset($_POST['submit']))
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Advanced Form</h1>
+              <h1>Customer ITR</h1>
             </div>
           
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Advanced Form</li>
+                <li class="breadcrumb-item active">Customer ITR</li>
               </ol>
             </div>
           </div>
@@ -252,7 +252,7 @@ if(isset($_POST['submit']))
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">ITR Form</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 

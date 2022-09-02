@@ -70,50 +70,53 @@ if(isset($_POST['update']))
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      
+
       <section class="content-header">
         <div class="container-fluid">
 
           <div class="row">
             <div class="col-12">
-            <h3>Payment</h3>
+              <h3>Payment</h3>
               <div class="card">
                 <div class="card-header">
                   <div class="row">
 
                     <div class="col-7 col-sm-12">
 
-                      <table id="example1" class="table table-bordered table-striped">
-                        
+                    <table id="example1" class="table table-bordered table-striped">
+
                         <thead>
                           <tr>
                             <th>Sr No.</th>
                             <th>Total_Payment_Amount</th>
                             <th>Advance_Payment_Amount</th>
                             <th>Balance</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
 
 
                         <tbody id="leads" class="packresult">
-                        <?php     
-                    $sql=mysqli_query($conn,"select * from payment");
+                          <?php     
+                    $sql=mysqli_query($conn,"select * from GST");
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                           <tr>
-                          <td><?php echo $count;?></td>
-                    <td><?php echo $arr['total_payment'];?></td>
-                    <td><?php echo $arr['advance_payment'];?></td>
-                    <td><?php echo $arr['balance'];?></td>
-                    
+                            <td><?php echo $count;?></td>
+                            <td><?php echo $arr['total_payment'];?></td>
+                            <td><?php echo $arr['advance_payment'];?></td>
+                            <td><?php echo $arr['balance'];?></td>
+                            <td><button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" style="color: aliceblue; float:right;"
+                        data-bs-target="#myModal">update</button></td>
                           </tr>
                           <?php $count++; }  ?>
                         </tbody>
-                        
+
                       </table>
-                      <button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal" data-bs-toggle="modal"  style="color: aliceblue; float:right;"data-bs-target="#myModal">update</button>
                       
+
                     </div>
 
                   </div>
@@ -127,7 +130,7 @@ if(isset($_POST['update']))
 
       </section>
     </div>
-  
+
 
     <!-- /.content-wrapper -->
     <?php
@@ -136,58 +139,58 @@ if(isset($_POST['update']))
   </div>
   <!-- ./wrapper -->
   <div class="modal" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-        <div class="modal-body">
-          <form method="post" enctype="multipart/form-data">
-          <div class="card-body">
-          <div class="row">
-            
-          <div class="col-6">
-                  <div class="form-group">
-                        <label>Total Payment Amt</label>
-                        <input type="text" class="form-control" name="total_payment" >
-                  </div>
-                  <!-- /.input group -->
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Advance Payment Amt</label>
-                        <input type="text" class="form-control" name="advance_payment" id="advanceAmt">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-            <div class="col-6">
-                  <div class="form-group">
-                        <label>Balance</label>
-                        <input type="text" class="form-control" name="balance" id="bal">
-                  </div>
-                  <!-- /.input group -->
-            </div>
-           
-            </div>
-                  
-                <!-- /.form group -->
-          </div>
-          
-          <button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal">update</button>
-                          </form>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Payment</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-      <!-- Modal footer -->
-     
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
+            <div class="card-body">
+              <div class="row">
 
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Total Payment Amt</label>
+                    <input type="text" class="form-control" name="total_payment">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Advance Payment Amt</label>
+                    <input type="text" class="form-control" name="advance_payment" id="advanceAmt">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Balance</label>
+                    <input type="text" class="form-control" name="balance" id="bal">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+              </div>
+
+              <!-- /.form group -->
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="update" data-bs-dismiss="modal">update</button>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+
+
+      </div>
     </div>
   </div>
-</div>
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -248,23 +251,25 @@ if(isset($_POST['update']))
       });
     });
   </script>
-  <script>
+ <script>
     $(function () {
       $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
+
+    });
+
+    $(function () {
+      $("#example2").DataTable({
         "responsive": true,
-      });
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+
     });
   </script>
   <script>

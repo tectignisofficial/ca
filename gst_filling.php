@@ -205,7 +205,7 @@ th {
 
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
+            <h4 class="modal-title">GST </h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
@@ -255,7 +255,39 @@ th {
                   <!-- /.input group -->
                 </div>
               </div>
-
+              <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Payment</h1><br>
+            </div>
+            <div class="row">
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Total Payment Amt</label>
+                        <input type="text" class="form-control" name="totAmt" id="totAmt">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Advance Payment Amt</label>
+                        <input type="text" class="form-control" name="advanceAmt" id="advanceAmt">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+            <div class="col-6">
+                  <div class="form-group">
+                        <label>Balance</label>
+                        <input type="text" class="form-control" name="bal" id="bal">
+                  </div>
+                  <!-- /.input group -->
+            </div>
+                    </div>
+            
+          </div>
+        </div><!-- /.container-fluid -->
+    </section>
               <!-- /.form group -->
             </div>
             <button type="submit" class="btn btn-primary" name="submit" data-bs-dismiss="modal">Submit</button>

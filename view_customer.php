@@ -80,12 +80,12 @@ if(isset($_POST['submi']))
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Advanced Form</h1>
+              <h1>Coustomer Details</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Advanced Form</li>
+                <li class="breadcrumb-item active">Coustomer Details</li>
               </ol>
             </div>
           </div>
@@ -111,31 +111,33 @@ if(isset($_POST['submi']))
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
-              <?php     
+                <?php     
                     $sql=mysqli_query($conn,"select * from customer_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
                   <div class="card card-widget widget-user">
-                    <div class="widget-user-header" >
-                      <div style="display:inline-block;width: 100%;">
-                      
-                        <a href="itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
-                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
-                        </a>
-                        <a href="view_clients">
-                          <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
-                        </a>
-                      
+                    <a href="itr.php?customerId=<?php echo $arr['cus_no']?>">
+                      <div class="widget-user-header">
+                        <div style="display:inline-block;width: 100%;">
+
+                          <a href="itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
+                            <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
+                          </a>
+                          <a href="itr.php?customerId=<?php echo $arr['cus_no']?>">
+                            <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
+                          </a>
+
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
                 <?php }  ?>
               </div>
             </div>
             <!-- /.card-body -->
-           
+
           </div>
           <!-- /.card -->
 
@@ -153,41 +155,40 @@ if(isset($_POST['submi']))
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="row justify-content-end mt-0"style="
+              <div class="row justify-content-end mt-0" style="
                     margin-bottom: 20px;
                 ">
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                  data-target="#businessITR" style="margin-right: 5px;">+ Add Business ITR</button>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#businessITR"
+                  style="margin-right: 5px;">+ Add Business ITR</button>
               </div>
               <div class="row">
-              <?php     
+                <?php     
                     $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
-                <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                   <div class="card card-widget widget-user">
-                    <div class="widget-user-header" >
+                    <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>">
+                      <div class="widget-user-header">
+                        <div style="display:inline-block;width: 100%;">
 
-                      <div style="display:inline-block;width: 100%;">
-                      
-                      
-                        <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
-                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
-                        </a>
-                        <a href="view_clients">
-                          <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
-                        </a>
+                          <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
+                            <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
+                          </a>
+                          <a href="business_itr.php?customerId=<?php echo $arr['cus_no']?>">
+                            <h5 style="font-size: 15px !important;" class="widget-user-username">Indivisual ITR</h5>
+                          </a>
+
+                        </div>
                       </div>
-                    </div> 
+                    </a>
                   </div>
-                  </a>
                 </div>
                 <?php }  ?>
               </div>
             </div>
             <!-- /.card-body -->
-           
+
           </div>
           <!-- /.card -->
 
@@ -205,35 +206,39 @@ if(isset($_POST['submi']))
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
-              <?php     
+                <?php     
                     $sql=mysqli_query($conn,"select * from business_registration where cus_no='$customer_id'");
                     while($arr=mysqli_fetch_array($sql)){
                     ?>
                 <div class="col-md-4 col-sm-6">
-                <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
                   <div class="card card-widget widget-user">
-                    <div class="widget-user-header" >
+                    <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>">
+                      <div class="widget-user-header">
+                        <div style="display:inline-block;width: 100%;">
 
-                      <div style="display:inline-block;width: 100%;">
-                      
-                      
-                        <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
-                          <h3 class="widget-user-desc"><?php echo $arr['name'];?></</h3>
-                        </a>
-                        <a href="gst_filling">
-                          <h5 style="font-size: 15px !important;" class="widget-user-username">Business ITR</h5>
-                        </a>
+                          <a href="gst_filling.php?customerId=<?php echo $arr['cus_no']?>" style="color:#000;">
+                            <h3 class="widget-user-desc"><?php echo $arr['name'];?></h3>
+                          </a>
+                          <?php     
+                          $sql=mysqli_query($conn,"select * from business_registration");
+                          while($arr=mysqli_fetch_array($sql)){
+                          ?>
+
+                          <h5 style="font-size: 15px !important;" class="widget-user-username">
+                            <?php echo $arr['gst_type'];?></h5>
+
+                          <?php }  ?>
+                        </div>
                       </div>
-                    </div> 
+                    </a>
                   </div>
-                  </a>
                 </div>
                 <?php }  ?>
               </div>
             </div>
 
             <!-- /.card-body -->
-           
+
           </div>
         </div>
         <!-- /.card -->
@@ -259,140 +264,142 @@ if(isset($_POST['submi']))
             </button>
           </div>
           <form method="post">
-          <div class="modal-body">
-          
-            <div class="row">
-            <div class="col-12">
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select class="form-control" name="category" id="inputcategory">
-                                        <option selected disabled>Select category</option>
-                                        <option>Individual</option>
-                                        <option>Business</option>
-                                    </select>
-                                </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="category" id="inputcategory">
+                      <option selected disabled>Select category</option>
+                      <option>Individual</option>
+                      <option>Business</option>
+                    </select>
+                  </div>
 
 
-                            </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Firm Name</label>
-                  <input type="text" class="form-control" name="name" placeholder="Enter ...">
-                  <input type="hidden" class="form-control" name="customer" value="<?php echo $customer_id ?>" placeholder="Enter ...">
                 </div>
               </div>
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Designation</label>
-                  <input type="text" class="form-control" name="designation" placeholder="Enter ...">
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Firm Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter ...">
+                    <input type="hidden" class="form-control" name="customer" value="<?php echo $customer_id ?>"
+                      placeholder="Enter ...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Designation</label>
+                    <input type="text" class="form-control" name="designation" placeholder="Enter ...">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Adress</label>
-                  <textarea class="form-control" name="adress"></textarea>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Adress</label>
+                    <textarea class="form-control" name="adress"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="number" class="form-control" name="number" placeholder="Enter ...">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="number" class="form-control" name="c_person" placeholder="Enter ...">
+                  </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Contact Number</label>
-                  <input type="number" class="form-control" name="number" placeholder="Enter ...">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Contact Person</label>
-                  <input type="number" class="form-control" name="c_person" placeholder="Enter ...">
-                </div>
-              </div>
-            </div>
-            <div class="row justify-content-center" id="btnGST">
-              <button type="button" name="" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
-            </div>
-            
-            <div class="row" id="GST" style="display:none;">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-              <h3>Add-GST </h3>
-            </div>
-            </div>
-                <!-- text input -->
-              <div class="col-sm-6">
-                <!-- text input -->
-                
-              
-              </div>
-              
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>GST No</label>
-                  <input type="text" class="form-control" name="gst_no" placeholder="">
-                </div>
-              
-              </div>
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                                    <label>GST Percentage</label>
-                                    <select class="form-control" name="gst_percentage" id="inputcategory">
-                                        <option selected disabled>5%</option>
-                                        <option>12%</option>
-                                        <option>28%</option>
-                                        <option>18%</option>
-                                    </select>
-                                </div>
+              <div class="row justify-content-center" id="btnGST">
+                <button type="button" name="" class="btn btn-outline-info btn-sm" onclick="addGST()">Add Gst</button>
               </div>
 
-              <div class="col-sm-6">
-                <!-- text input -->
-                                <div class="form-group">
-                                    <label>GST Type</label>
-                                    <select class="form-control" name="gst_type" id="inputcategory">
-                                        <option selected disabled>Monthly</option>
-                                        <option>Quaterly</option>
-                                    </select>
-                                </div>
-              </div>
-          
-
-              <div class="col-sm-6">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>GST</label>
-                  <select class="form-control" name="gst" id="inputcategory">
-                                        <option selected disabled>GSTR-1</option>
-                                        <option>GST3-B</option>
-                                    </select>
+              <div class="row" id="GST" style="display:none;">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h3>Add-GST </h3>
+                  </div>
                 </div>
-              </div>
+                <!-- text input -->
+                <div class="col-sm-6">
+                  <!-- text input -->
 
-              <input type="submit" name="submi" class="btn btn-primary" value="Save changes">
+
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>GST No</label>
+                    <input type="text" class="form-control" name="gst_no" placeholder="">
+                  </div>
+
+                </div>
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>GST Percentage</label>
+                    <select class="form-control" name="gst_percentage" id="inputcategory">
+                      <option selected disabled>5%</option>
+                      <option>12%</option>
+                      <option>28%</option>
+                      <option>18%</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>GST Type</label>
+                    <select class="form-control" name="gst_type" id="inputcategory">
+                      <option selected disabled>Monthly</option>
+                      <option>Quaterly</option>
+                    </select>
+                  </div>
+                </div>
 
 
-              <div class="col-sm-12">
-                <div class="row justify-content-center">
-                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeGST()">Remove Gst</button>
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>GST</label>
+                    <select class="form-control" name="gst" id="inputcategory">
+                      <option selected disabled>GSTR-1</option>
+                      <option>GST3-B</option>
+                    </select>
+                  </div>
+                </div>
+
+                <input type="submit" name="submi" class="btn btn-primary" value="Save changes">
+
+
+                <div class="col-sm-12">
+                  <div class="row justify-content-center">
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeGST()">Remove
+                      Gst</button>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-          
 
-          <div class="modal-footer">
-          </div>
-          
+
+            <div class="modal-footer">
+            </div>
+
         </div>
-        
+
       </div>
       </form>
     </div>
@@ -411,6 +418,7 @@ if(isset($_POST['submi']))
       document.getElementById("GST").removeAttribute("style");
       // document.getElementById("btnGST").removeAttribute("style");
     }
+
     function removeGST() {
       document.getElementById("GST").setAttribute("style", "display:none;");
       document.getElementById("btnGST").removeAttribute("style");
@@ -457,9 +465,13 @@ if(isset($_POST['submi']))
       })
 
       //Datemask dd/mm/yyyy
-      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+      $('#datemask').inputmask('dd/mm/yyyy', {
+        'placeholder': 'dd/mm/yyyy'
+      })
       //Datemask2 mm/dd/yyyy
-      $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+      $('#datemask2').inputmask('mm/dd/yyyy', {
+        'placeholder': 'mm/dd/yyyy'
+      })
       //Money Euro
       $('[data-mask]').inputmask()
 
@@ -469,7 +481,11 @@ if(isset($_POST['submi']))
       });
 
       //Date and time picker
-      $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+      $('#reservationdatetime').datetimepicker({
+        icons: {
+          time: 'far fa-clock'
+        }
+      });
 
       //Date range picker
       $('#reservation').daterangepicker()
@@ -482,15 +498,15 @@ if(isset($_POST['submi']))
         }
       })
       //Date range as a button
-      $('#daterange-btn').daterangepicker(
-        {
+      $('#daterange-btn').daterangepicker({
           ranges: {
             'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf(
+              'month')]
           },
           startDate: moment().subtract(29, 'days'),
           endDate: moment()
@@ -549,7 +565,9 @@ if(isset($_POST['submi']))
 
     myDropzone.on("addedfile", function (file) {
       // Hookup the start button
-      file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
+      file.previewElement.querySelector(".start").onclick = function () {
+        myDropzone.enqueueFile(file)
+      }
     })
 
     // Update the total progress bar
@@ -578,7 +596,7 @@ if(isset($_POST['submi']))
     document.querySelector("#actions .cancel").onclick = function () {
       myDropzone.removeAllFiles(true)
     }
-  // DropzoneJS Demo Code End
+    // DropzoneJS Demo Code End
   </script>
 </body>
 
